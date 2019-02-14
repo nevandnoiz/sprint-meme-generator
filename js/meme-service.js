@@ -3,6 +3,7 @@ var gNextId = 1;
 var gImgs;
 var gCtx;
 var gMeme;
+var gFilterOptions = [];
 
 
 
@@ -17,7 +18,28 @@ function createImage(url, keywords) {
 function createImgs() {
     var imgs = [];
     imgs.push(
-        createImage('Oprah-You-Get-A.jpg', ['happy']),
+        createImage('2.jpg', ['happy, nature']),
+        createImage('003.jpg', ['angry', 'trump']),
+        createImage('004.jpg', ['cute', 'puppys']),
+        createImage('005.jpg', ['cute', 'baby']),
+        createImage('5.jpg', ['cute', 'baby']),
+        createImage('006.jpg', ['tired', 'cat']),
+        createImage('8.jpg', ['funny', 'hat']),
+        createImage('9.jpg', ['funny', 'baby']),
+        createImage('12.jpg', ['funny', 'zadik']),
+        createImage('19.jpg', ['angry']),
+        createImage('drevil.jpg', ['funny', 'drevil']),
+        createImage('img2.jpg', ['happy', 'babys']),
+        createImage('img4.jpg', ['funny', 'trump']),
+        createImage('img5.jpg', ['funny', 'baby']),
+        createImage('img6.jpg', ['funny', 'dog']),
+        createImage('img11.jpg', ['happy', 'obama']),
+        createImage('img12.jpg', ['funny', 'sports']),
+        createImage('img12.jpg', ['fun', 'leo']),
+        createImage('meme1.jpg', ['sad', 'morpheus']),
+        createImage('patrick.jpg', ['happy', 'patrick']),
+        createImage('putin.jpg', ['funny', 'putin']),
+        createImage('Oprah-You-Get-A.jpg', ['happy', 'angry', 'joke']),
         createImage('One-Does-Not-Simply.jpg', ['fun']),
         createImage('Ancient-Aliens.jpg', ['happy']),
         createImage('Batman-Slapping-Robin.jpg', ['happy']),
@@ -32,6 +54,20 @@ function createMeme(imgId) {
         selectedImgId: imgId,
         txts: [createTxtEditor('Your Text', 150, 70), createTxtEditor('Your Text', 150, 300)]
     };
+}
+
+function createFilterOptions() {
+    gImgs.forEach(function (img) {
+        var keywords = img.keywords;
+        if (keywords.length === 1) {
+            var keyword = img.keywords.join();
+            if (!gFilterOptions.includes(keyword)) gFilterOptions.push(keyword);
+        } else {
+            keywords.forEach(function (keyword) {
+                if (!gFilterOptions.includes(keyword)) gFilterOptions.push(keyword);
+            })
+        }
+    })
 }
 
 function createTxtEditor(line, x, y) {

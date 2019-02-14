@@ -2,6 +2,8 @@
 
 function init() {
     gImgs = createImgs();
+    createFilterOptions();
+    renderFilterOptions();
     renderImgs(gImgs);
 }
 
@@ -13,6 +15,16 @@ function renderImgs(imgs) {
         `
     })
     document.querySelector('.img-gallery').innerHTML = strHtml;
+}
+
+function renderFilterOptions() {
+    var strHtml = '';
+    gFilterOptions.forEach(function (filterOption) {
+        strHtml += `
+        <option value="${filterOption}">${filterOption}</option>
+        `
+    })
+    document.querySelector('#filter-options').innerHTML = strHtml;
 }
 
 function initMemeEditor(imgId) {
