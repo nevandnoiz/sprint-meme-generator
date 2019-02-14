@@ -14,16 +14,18 @@
         <h1>Meme Generator</h1>
     </header>
     <main>
-        <div class="img-gallery grid">
+        <div class="gallery-container grid">
 
         </div>
-        <div class="meme-editor hidden">
+        <div class="meme-editor-container hidden">
             <button onclick="toggleView()" class="discard-btn">
                 X Discard meme
             </button>
-            <canvas class="meme-canvas">
+            <div class="meme-control">
+                <canvas class="meme-canvas">
 
-            </canvas>
+                </canvas>
+            </div>
         </div>
     </main>
     <script src="js/util.js"></script>

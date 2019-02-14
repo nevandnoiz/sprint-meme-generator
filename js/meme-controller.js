@@ -12,7 +12,7 @@ function renderImgs(imgs) {
         <img data-id='${img.id}' src='img/${img.url}' onclick="initMemeEditor(${img.id},this)" alt='meme picture'/>
         `
     })
-    document.querySelector('.img-gallery').innerHTML = strHtml;
+    document.querySelector('.gallery-container').innerHTML = strHtml;
 }
 
 function initMemeEditor(imgId) {
@@ -23,8 +23,8 @@ function initMemeEditor(imgId) {
 }
 
 function toggleView() {
-    document.querySelector('.meme-editor').classList.toggle('hidden');
-    document.querySelector('.img-gallery').classList.toggle('hidden');
+    document.querySelector('.meme-editor-container').classList.toggle('hidden');
+    document.querySelector('.gallery-container').classList.toggle('hidden');
 }
 
 function onFiterImages(value) {
