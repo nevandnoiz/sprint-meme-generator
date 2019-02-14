@@ -68,3 +68,10 @@ function createCanvas(imgId) {
         drawCanvas(elImg);
     };
 }
+
+function filterImages(keyword){
+    var fltrImgs = gImgs.filter(function(img){
+return img.keywords
+    })
+    return fltrImgs
+}

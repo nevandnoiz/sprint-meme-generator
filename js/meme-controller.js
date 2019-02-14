@@ -2,12 +2,12 @@
 
 function init() {
     gImgs = createImgs();
-    renderImgs();
+    renderImgs(gImgs);
 }
 
-function renderImgs() {
+function renderImgs(imgs) {
     var strHtml = '';
-    gImgs.forEach(function (img) {
+    imgs.forEach(function (img) {
         strHtml += `
         <img data-id='${img.id}' src='img/${img.url}' onclick="initMemeEditor(${img.id},this)" alt='meme picture'/>
         `
