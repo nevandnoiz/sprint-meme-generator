@@ -26,3 +26,8 @@ function toggleView() {
     document.querySelector('.meme-editor').classList.toggle('hidden');
     document.querySelector('.img-gallery').classList.toggle('hidden');
 }
+
+function onFiterImages(value) {
+    var fltrdImgs=filterImages(value);
+    renderImgs(fltrdImgs);
+}

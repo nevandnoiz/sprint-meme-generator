@@ -57,15 +57,9 @@ function createTxtEditor(line, x, y) {
 function createCanvas(imgId) {
     var canvas = document.querySelector('.meme-canvas');
     gCtx = canvas.getContext('2d');
-
-    var elImg=document.querySelector(`img[data-id='${imgId}']`)
-
-    // elImg.onload = function () {
-        canvas.width = elImg.width;
-        canvas.height = elImg.height;
-        // gMeme.txts[1].y = elImg.height - 70;
-
-    // };
+    var elImg = document.querySelector(`img[data-id='${imgId}']`)
+    canvas.width = elImg.width;
+    canvas.height = elImg.height;
     drawCanvas(elImg);
 }
 
@@ -75,5 +69,10 @@ function drawCanvas(img) {
     // gMeme.txts.forEach(function (txt) {
     //     drawTxt(txt);
     // });
+}
 
+function filterImages(keyword) {
+    return gImgs.filter(function (img) {
+        return img.keywords.includes(keyword);
+    })
 }
