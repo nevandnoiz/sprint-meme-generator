@@ -52,8 +52,28 @@ function createImgs() {
 function createMeme(imgId) {
     return {
         selectedImgId: imgId,
-        txts: [createTxtEditor('Your Text', 150, 70), createTxtEditor('Your Text', 150, 300)]
+        txts: [createMemeTxt('Your Text', 150, 70), createMemeTxt('Your Text', 150, 300)]
     };
+}
+
+function createMemeTxt(text, x, y) {
+    return {
+        text: text,
+        size: 40,
+        align: 'left',
+        color: '#000000',
+        fontFamily: 'Impact',
+        isOutline: true,
+        lineWidth: 2,
+        strokeStyle: '#ffffff',
+        isShadow: false,
+        shadowColor: '#000000',
+        shadowOffsetX: 1,
+        shadowOffsetY: 1,
+        shadowBlur: 0,
+        x: x,
+        y: y
+    }
 }
 
 function createFilterOptions() {
@@ -70,26 +90,6 @@ function createFilterOptions() {
     })
 }
 
-function createTxtEditor(line, x, y) {
-    return {
-        line: line,
-        size: 40,
-        align: 'left',
-        color: '#000000', // in color picker, if choosing color from platte notice it stays "solid".
-        fontFamily: 'Impact',
-        isOutline: true,
-        lineWidth: 2, // outline width
-        strokeStyle: '#ffffff',
-        isShadow: false,
-        shadowColor: '#000000',
-        shadowOffsetX: 1,
-        shadowOffsetY: 1,
-        shadowBlur: 0,
-        x: x,
-        y: y
-    };
-}
-
 function createCanvas(imgId) {
     var canvas = document.querySelector('.meme-canvas');
     gCtx = canvas.getContext('2d');
@@ -102,9 +102,9 @@ function createCanvas(imgId) {
 function drawCanvas(img) {
     gCtx.drawImage(img, 0, 0);
 
-    // gMeme.txts.forEach(function (txt) {
-    //     drawTxt(txt);
-    // });
+    gMeme.txts.forEach(function (txt) {
+        renderTxt(txt);
+    });
 }
 
 function filterImages(keyword) {

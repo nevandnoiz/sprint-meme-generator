@@ -27,6 +27,11 @@ function renderFilterOptions() {
     document.querySelector('#filter-options').innerHTML = strHtml;
 }
 
+function onFiterImages(value) {
+    let fltrdImgs = filterImages(value);
+    renderImgs(fltrdImgs);
+}
+
 function initMemeEditor(imgId) {
     toggleView();
     gMeme = createMeme(imgId);
@@ -34,12 +39,17 @@ function initMemeEditor(imgId) {
     // renderTxtsEditor();
 }
 
+function renderTxt(txt) {
+    gCtx.font = `${txt.size}px ${txt.fontFamily}`;
+    gCtx.textAlign = txt.align;
+    gCtx.fillStyle = txt.color;
+    // if (txt.isShadow) addTxtShadow(txt);
+    // if (txt.isOutline) addTxtOutline(txt);
+
+    gCtx.fillText(txt.text, txt.x, txt.y);
+}
+
 function toggleView() {
     document.querySelector('.meme-editor-container').classList.toggle('hidden');
     document.querySelector('.gallery-container').classList.toggle('hidden');
-}
-
-function onFiterImages(value) {
-    let fltrdImgs = filterImages(value);
-    renderImgs(fltrdImgs);
 }

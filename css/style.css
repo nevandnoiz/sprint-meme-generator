@@ -13,11 +13,11 @@ header {
 
 .grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-grid-gap: 10px;
-padding: 10px;
 }
 
+.flex {
+display: flex;
+}
 
 .hidden {
     display: none;
@@ -31,6 +31,12 @@ padding: 10px;
 .filter-input {
     margin: 0 auto;
     display: block;
+}
+
+.img-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
 }
 
 .img-gallery>img {
@@ -51,4 +57,14 @@ padding: 10px;
 .discard-btn {
     display: block;
     margin-bottom: 30px;
+}
+
+.text-editor {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+    width: 500px;
+    margin-left: 30px;
+    border: 2px solid black;
 }
