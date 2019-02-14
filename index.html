@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,24 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Meme Generator</title>
 </head>
-<body>
-    
+
+<body onload="init()">
+    <header>
+        <h1>Meme Generator</h1>
+    </header>
+    <main>
+        <div class="img-gallery grid">
+            
+        </div>
+        <div class="meme-editor">
+            <canvas class="meme-canvas">
+
+            </canvas>
+        </div>
+    </main>
     <script src="js/util.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/meme-service.js"></script>
 </body>
+
 </html>
