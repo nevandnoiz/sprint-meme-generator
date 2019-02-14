@@ -45,6 +45,7 @@ display: flex;
     height: 200px;
     cursor: pointer;
     border-radius: 2px;
+    object-fit: cover;
 }
 
 .img-gallery>img:hover {
@@ -54,7 +55,13 @@ display: flex;
 
 /*Meme Editor: */
 
+.meme-control {
+    justify-content: space-evenly;
+    /* flex-wrap:wrap; */
+}
+
 .discard-btn {
+    margin:0 auto;
     display: block;
     margin-bottom: 30px;
 }

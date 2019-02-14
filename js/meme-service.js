@@ -18,7 +18,7 @@ function createImage(url, keywords) {
 function createImgs() {
     var imgs = [];
     imgs.push(
-        createImage('2.jpg', ['happy, nature']),
+        createImage('2.jpg', ['happy', 'nature']),
         createImage('003.jpg', ['angry', 'trump']),
         createImage('004.jpg', ['cute', 'puppys']),
         createImage('005.jpg', ['cute', 'baby']),
@@ -35,7 +35,7 @@ function createImgs() {
         createImage('img6.jpg', ['funny', 'dog']),
         createImage('img11.jpg', ['happy', 'obama']),
         createImage('img12.jpg', ['funny', 'sports']),
-        createImage('img12.jpg', ['fun', 'leo']),
+        createImage('leo.jpg', ['fun', 'leo']),
         createImage('meme1.jpg', ['sad', 'morpheus']),
         createImage('patrick.jpg', ['happy', 'patrick']),
         createImage('putin.jpg', ['funny', 'putin']),
@@ -52,7 +52,10 @@ function createImgs() {
 function createMeme(imgId) {
     return {
         selectedImgId: imgId,
-        txts: [createMemeTxt('Your Text', 150, 70), createMemeTxt('Your Text', 150, 300)]
+        txts: [
+            createMemeTxt('Your Text', 230, 100), 
+            // createMemeTxt('Your Text', 150, 300)
+        ]
     };
 }
 
@@ -94,8 +97,8 @@ function createCanvas(imgId) {
     var canvas = document.querySelector('.meme-canvas');
     gCtx = canvas.getContext('2d');
     var elImg = document.querySelector(`img[data-id='${imgId}']`)
-    canvas.width = elImg.width;
-    canvas.height = elImg.height;
+    // canvas.width = elImg.width;
+    // canvas.height = elImg.height;
     drawCanvas(elImg);
 }
 
