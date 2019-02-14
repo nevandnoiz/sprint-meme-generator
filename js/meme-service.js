@@ -27,7 +27,7 @@ function createImgs() {
         createImage('8.jpg', ['funny', 'hat']),
         createImage('9.jpg', ['funny', 'baby']),
         createImage('12.jpg', ['funny', 'zadik']),
-        createImage('19.jpg', ['angry']),
+        // createImage('19.jpg', ['angry']),
         createImage('drevil.jpg', ['funny', 'drevil']),
         createImage('img2.jpg', ['happy', 'babys']),
         createImage('img4.jpg', ['funny', 'trump']),
@@ -97,14 +97,14 @@ function createCanvas(imgId) {
     var canvas = document.querySelector('.meme-canvas');
     gCtx = canvas.getContext('2d');
     var elImg = document.querySelector(`img[data-id='${imgId}']`)
-    // canvas.width = elImg.width;
-    // canvas.height = elImg.height;
+    canvas.width = elImg.width;
+    canvas.height = elImg.height;
     drawCanvas(elImg);
 }
 
 function drawCanvas(img) {
     gCtx.drawImage(img, 0, 0);
-
+    
     gMeme.txts.forEach(function (txt) {
         renderTxt(txt);
     });
@@ -114,4 +114,8 @@ function filterImages(keyword) {
     return gImgs.filter(function (img) {
         return img.keywords.includes(keyword);
     })
+}
+
+function editMemeTxt(txt) {
+    gMeme.txts[0].text = txt;
 }

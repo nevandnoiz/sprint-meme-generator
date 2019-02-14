@@ -39,7 +39,14 @@ function initMemeEditor(imgId) {
     // renderTxtsEditor();
 }
 
+function onInputText(txt) {
+    // console.log(txt);
+    editMemeTxt(txt);
+    createCanvas(gMeme.selectedImgId);
+}
+
 function renderTxt(txt) {
+    ///console.log(txt);
     gCtx.font = `${txt.size}px ${txt.fontFamily}`;
     gCtx.textAlign = txt.align;
     gCtx.fillStyle = txt.color;
