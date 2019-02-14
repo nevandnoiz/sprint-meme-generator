@@ -1,0 +1,43 @@
+
+
+/* Helpers: */
+
+header {
+    background-color: darkblue;
+    color: lightblue;
+    text-align: center;
+    height: 90px;
+    line-height: 90px;
+    margin-bottom: 30px;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-gap: 10px;
+padding: 10px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+/* Gallery: */
+
+.img-gallery {
+
+}
+
+.img-gallery>img {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 2px;
+
+}
+
+.img-gallery>img:hover {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    /* box-shadow: 0 0 10px 6px rgba(0, 140, 186, 0.5); */
+}
