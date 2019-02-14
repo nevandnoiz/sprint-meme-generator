@@ -9,9 +9,30 @@ function renderImgs() {
     var strHtml = '';
     gImgs.forEach(function (img) {
         strHtml += `
-        <img id='${img.id}' src='img/${img.url}' onclick="initMemeEditor(${img.id},this)" alt='meme picture'/>
+        <img data-id='${img.id}' src='img/${img.url}' onclick="initMemeEditor(${img.id},this)" alt='meme picture'/>
         `
     })
-    console.log(strHtml);
     document.querySelector('.img-gallery').innerHTML = strHtml;
+}
+
+function initMemeEditor(imgId) {
+    toggleView();
+    gMeme = createMeme(imgId);
+    createCanvas(imgId);
+    // renderTxtsEditor();
+}
+
+function toggleView() {
+    document.querySelector('.meme-editor').classList.toggle('hidden');
+    document.querySelector('.img-gallery').classList.toggle('hidden');
+}
+
+
+function drawCanvas(img) {
+    gCtx.drawImage(img, 0, 0);
+
+    // gMeme.txts.forEach(function (txt) {
+    //     drawTxt(txt);
+    // });
+
 }
