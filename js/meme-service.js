@@ -60,18 +60,20 @@ function createCanvas(imgId) {
 
     var elImg=document.querySelector(`img[data-id='${imgId}']`)
 
-    elImg.onload = function () {
+    // elImg.onload = function () {
         canvas.width = elImg.width;
         canvas.height = elImg.height;
         // gMeme.txts[1].y = elImg.height - 70;
 
-        drawCanvas(elImg);
-    };
+    // };
+    drawCanvas(elImg);
 }
 
-function filterImages(keyword){
-    var fltrImgs = gImgs.filter(function(img){
-return img.keywords
-    })
-    return fltrImgs
+function drawCanvas(img) {
+    gCtx.drawImage(img, 0, 0);
+
+    // gMeme.txts.forEach(function (txt) {
+    //     drawTxt(txt);
+    // });
+
 }
