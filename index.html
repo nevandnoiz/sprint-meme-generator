@@ -33,20 +33,21 @@
                 <div class="text-editor flex">
                     <input type="text" placeholder="Your Text" oninput="onInputText(value)">
                     <select>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                          </select>
-                    <input type="color">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <input type="color" oninput="onChangeColor(value)">
+
                     <input type="range" min="1" max="96">
-                  <div class="text-aligning">
-                      <button>L</button>
-                      <button>C</button>
-                      <button>R</button>
+                    <div class="text-aligning">
+                        <button value="left" onclick="onTextAlign(this)">L</button>
+                        <button value="center" onclick="onTextAlign(this)">C</button>
+                        <button value="right" onclick="onTextAlign(this)">R</button>
                     </div>
                     <input type="number">
-                    <button>Delete Text</button>
+                    <button onclick="onDelete()">Delete Text</button>
                 </div>
             </div>
         </div>

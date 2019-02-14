@@ -53,7 +53,7 @@ function createMeme(imgId) {
     return {
         selectedImgId: imgId,
         txts: [
-            createMemeTxt('Your Text', 230, 100), 
+            createMemeTxt('Your Text', 230, 100),
             // createMemeTxt('Your Text', 150, 300)
         ]
     };
@@ -104,7 +104,7 @@ function createCanvas(imgId) {
 
 function drawCanvas(img) {
     gCtx.drawImage(img, 0, 0);
-    
+
     gMeme.txts.forEach(function (txt) {
         renderTxt(txt);
     });
@@ -118,4 +118,19 @@ function filterImages(keyword) {
 
 function editMemeTxt(txt) {
     gMeme.txts[0].text = txt;
+}
+
+function editTextColor(color) {
+    gMeme.txts[0].color = color;
+}
+
+function editTextAlign(alignment) {
+    if (alignment === 'left') gMeme.txts[0].x = gCtx.canvas.width * 0.1;
+    else if (alignment === 'right') gMeme.txts[0].x = gCtx.canvas.width * 0.7;
+    else if (alignment === 'center') gMeme.txts[0].x = gCtx.canvas.width * 0.4;
+}
+
+function deleteTxt(txtIdx) {
+    gMeme.txts.splice(txtIdx, 1); //arr.splice(start, deleteCount)
+    // renderTxtsEditor();
 }
