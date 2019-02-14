@@ -126,6 +126,21 @@ function editTextFont(font) {
     gMeme.txts[0].fontFamily = font;
 }
 
+function editTextColor(color) {
+    gMeme.txts[0].color = color;
+}
+
+function editTextAlign(alignment) {
+    if (alignment === 'left') gMeme.txts[0].x = gCtx.canvas.width * 0.1;
+    else if (alignment === 'right') gMeme.txts[0].x = gCtx.canvas.width * 0.7;
+    else if (alignment === 'center') gMeme.txts[0].x = gCtx.canvas.width * 0.4;
+}
+
+function deleteTxt(txtIdx) {
+    gMeme.txts.splice(txtIdx, 1); //arr.splice(start, deleteCount)
+    // renderTxtsEditor();
+}
+
 function editTextFontSize(size) {
     gMeme.txts[0].size = size;
 }

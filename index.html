@@ -38,18 +38,18 @@
                         <option value="Tahoma">Tahoma</option>
                         <option value="Comic Sans MS">Comic Sans MS</option>
                     </select>
-                    <input type="color">
+                    <input type="color" oninput="onChangeColor(value)">
                     <div class="font-size-range">
                         <input oninput="onChangeFontSize(value)" type="range" value="40" min="1" max="120">
                         <span>40</span>
                     </div>
                     <div class="text-aligning">
-                        <button>L</button>
-                        <button>C</button>
-                        <button>R</button>
+                            <button value="left" onclick="onTextAlign(this)">L</button>
+                            <button value="center" onclick="onTextAlign(this)">C</button>
+                            <button value="right" onclick="onTextAlign(this)">R</button>
                     </div>
                     <input type="number">
-                    <button>Delete Text</button>
+                    <button onclick="onDelete()">Delete Text</button>
                 </div>
             </div>
         </div>

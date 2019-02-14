@@ -42,8 +42,24 @@ function initMemeEditor(imgId) {
 }
 
 function onInputText(txt) {
-    // console.log(txt);
     editMemeTxt(txt);
+    createCanvas(gMeme.selectedImgId);
+}
+
+function onChangeColor(color) {
+    editTextColor(color)
+    createCanvas(gMeme.selectedImgId);
+}
+
+function onTextAlign(elAlignment) {
+    let alignment = elAlignment.value;
+    editTextAlign(alignment);
+    createCanvas(gMeme.selectedImgId);
+}
+
+function onDelete() {
+    deleteTxt(0);
+    document.querySelector('.text-editor').classList.toggle('hidden');
     createCanvas(gMeme.selectedImgId);
 }
 
