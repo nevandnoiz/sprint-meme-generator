@@ -4,6 +4,8 @@ var gImgs;
 var gCtx;
 var gMeme;
 var gFilterOptions = [];
+var gMouseClicked = false;
+var gPrevPos;
 
 
 
@@ -53,8 +55,8 @@ function createMeme(imgId) {
     return {
         selectedImgId: imgId,
         txts: [
-            createMemeTxt('Your Text', 230, 100),
-            // createMemeTxt('Your Text', 150, 300)
+            createMemeTxt('Your Text', 235, 70),
+            // createMemeTxt('Your Text', 235, 450)
         ]
     };
 }
@@ -63,12 +65,13 @@ function createMemeTxt(text, x, y) {
     return {
         text: text,
         size: 40,
+        textWidth: '',
         align: 'left',
-        color: '#000000',
+        color: '#ffffff',
         fontFamily: 'Impact',
         isOutline: true,
-        lineWidth: 2,
-        strokeStyle: '#ffffff',
+        lineWidth: 3,
+        strokeStyle: '#000000',
         isShadow: false,
         shadowColor: '#000000',
         shadowOffsetX: 1,
@@ -97,13 +100,15 @@ function createCanvas(imgId) {
     var canvas = document.querySelector('.meme-canvas');
     gCtx = canvas.getContext('2d');
     var elImg = document.querySelector(`img[data-id='${imgId}']`)
-    canvas.width = elImg.width;
-    canvas.height = elImg.height;
+    var aspectRatio = elImg.height / elImg.width;
+    // canvas.width = elImg.width;
+    canvas.height = 600 * aspectRatio;
     drawCanvas(elImg);
 }
 
 function drawCanvas(img) {
-    gCtx.drawImage(img, 0, 0);
+    var aspectRatio = img.height / img.width;
+    gCtx.drawImage(img, 0, 0, 600, 600 * aspectRatio);
 
     gMeme.txts.forEach(function (txt) {
         renderTxt(txt);
@@ -130,10 +135,20 @@ function editTextColor(color) {
     gMeme.txts[0].color = color;
 }
 
+function editOutlineColor(color) {
+    gMeme.txts[0].strokeStyle = color;
+}
+
+function editTxtOutline(txt) {
+    gCtx.strokeStyle = txt.strokeStyle;
+    gCtx.lineWidth = txt.lineWidth;
+    gCtx.strokeText(txt.text, txt.x, txt.y);
+}
+
 function editTextAlign(alignment) {
-    if (alignment === 'left') gMeme.txts[0].x = gCtx.canvas.width * 0.1;
-    else if (alignment === 'right') gMeme.txts[0].x = gCtx.canvas.width * 0.7;
-    else if (alignment === 'center') gMeme.txts[0].x = gCtx.canvas.width * 0.4;
+    if (alignment === 'left') gMeme.txts[0].x = 50;
+    else if (alignment === 'right') gMeme.txts[0].x = 400;
+    else if (alignment === 'center') gMeme.txts[0].x = 235;
 }
 
 function deleteTxt(txtIdx) {
@@ -143,4 +158,23 @@ function deleteTxt(txtIdx) {
 
 function editTextFontSize(size) {
     gMeme.txts[0].size = size;
+}
+
+function editOutlineWidth(width) {
+    gMeme.txts[0].lineWidth = width;
+}
+
+function canvasClicked(ev){
+    return gMeme.txts.find(function (txt){
+        return (
+            ev.offsetX >= txt.x &&
+            ev.offsetX <= txt.x+txt.textWidth &&
+            ev.offsetY <= txt.y &&
+            ev.offsetY >= txt.y-txt.size
+        )
+    })
+}
+
+function TouggleOutline() {
+    gMeme.txts[0].isOutline = !gMeme.txts[0].isOutline;
 }
