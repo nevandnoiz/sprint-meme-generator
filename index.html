@@ -15,7 +15,7 @@
     </header>
     <main>
         <div class="gallery-container">
-            <input list="filter-options" class="filter-input" name="search" onchange="onFiterImages(value)">
+            <input list="filter-options" class="filter-input" name="search" onkeyup="onFiterImages(value)">
             <datalist id="filter-options">
 
             </datalist>
@@ -32,18 +32,21 @@
                 </canvas>
                 <div class="text-editor flex">
                     <input type="text" placeholder="Your Text" oninput="onInputText(value)">
-                    <select>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                          </select>
+                    <select onchange="onChangeFont(value)">
+                        <option value="Impact" autoselected>Impact</option>
+                        <option value="Arial Black">Arial Black</option>
+                        <option value="Tahoma">Tahoma</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                    </select>
                     <input type="color">
-                    <input type="range" min="1" max="96">
-                  <div class="text-aligning">
-                      <button>L</button>
-                      <button>C</button>
-                      <button>R</button>
+                    <div class="font-size-range">
+                        <input oninput="onChangeFontSize(value)" type="range" value="40" min="1" max="120">
+                        <span>40</span>
+                    </div>
+                    <div class="text-aligning">
+                        <button>L</button>
+                        <button>C</button>
+                        <button>R</button>
                     </div>
                     <input type="number">
                     <button>Delete Text</button>

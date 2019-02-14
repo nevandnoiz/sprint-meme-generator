@@ -27,8 +27,10 @@ function renderFilterOptions() {
     document.querySelector('#filter-options').innerHTML = strHtml;
 }
 
-function onFiterImages(value) {
-    let fltrdImgs = filterImages(value);
+function onFiterImages(searchTxt) { 
+    let fltrdImgs = filterImages(searchTxt);
+    // if (searchTxt === '') return renderImgs(gImgs);
+    // if (fltrdImgs.length>0) 
     renderImgs(fltrdImgs);
 }
 
@@ -54,6 +56,17 @@ function renderTxt(txt) {
     // if (txt.isOutline) addTxtOutline(txt);
 
     gCtx.fillText(txt.text, txt.x, txt.y);
+}
+
+function onChangeFont(font) {
+    editTextFont(font);
+    createCanvas(gMeme.selectedImgId);
+}
+
+function onChangeFontSize(size) {
+    editTextFontSize(size);
+    createCanvas(gMeme.selectedImgId);
+    document.querySelector('.font-size-range span').innerText = size;
 }
 
 function toggleView() {

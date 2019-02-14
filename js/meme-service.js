@@ -29,7 +29,7 @@ function createImgs() {
         createImage('12.jpg', ['funny', 'zadik']),
         // createImage('19.jpg', ['angry']),
         createImage('drevil.jpg', ['funny', 'drevil']),
-        createImage('img2.jpg', ['happy', 'babys']),
+        createImage('img2.jpg', ['happy', 'baby']),
         createImage('img4.jpg', ['funny', 'trump']),
         createImage('img5.jpg', ['funny', 'baby']),
         createImage('img6.jpg', ['funny', 'dog']),
@@ -53,7 +53,7 @@ function createMeme(imgId) {
     return {
         selectedImgId: imgId,
         txts: [
-            createMemeTxt('Your Text', 230, 100), 
+            createMemeTxt('Your Text', 230, 100),
             // createMemeTxt('Your Text', 150, 300)
         ]
     };
@@ -104,18 +104,28 @@ function createCanvas(imgId) {
 
 function drawCanvas(img) {
     gCtx.drawImage(img, 0, 0);
-    
+
     gMeme.txts.forEach(function (txt) {
         renderTxt(txt);
     });
 }
 
-function filterImages(keyword) {
-    return gImgs.filter(function (img) {
-        return img.keywords.includes(keyword);
+function filterImages(searchTxt) {
+    return gImgs.filter((img) => {
+        return img.keywords.some(function (keyword) {
+            if (keyword.includes(searchTxt)) return true;
+        });
     })
 }
 
 function editMemeTxt(txt) {
     gMeme.txts[0].text = txt;
+}
+
+function editTextFont(font) {
+    gMeme.txts[0].fontFamily = font;
+}
+
+function editTextFontSize(size) {
+    gMeme.txts[0].size = size;
 }
