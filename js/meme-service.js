@@ -164,6 +164,10 @@ function editOutlineWidth(width) {
     gMeme.txts[0].lineWidth = width;
 }
 
+function TouggleOutline() {
+    gMeme.txts[0].isOutline = !gMeme.txts[0].isOutline;
+}
+
 function canvasClicked(ev){
     return gMeme.txts.find(function (txt){
         return (
@@ -175,6 +179,3 @@ function canvasClicked(ev){
     })
 }
 
-function TouggleOutline() {
-    gMeme.txts[0].isOutline = !gMeme.txts[0].isOutline;
-}

@@ -109,24 +109,24 @@ function toggleView() {
     document.querySelector('.gallery-container').classList.toggle('hidden');
 }
 
-function onMouseDownUp() {
-    gMouseClicked = !gMouseClicked;
-    // console.log(gMouseClicked)
-}
+// function onMouseDownUp() {
+//     gMouseClicked = !gMouseClicked;
+//     // console.log(gMouseClicked)
+// }
 
-function onMouseMove(ev) {
-    if (!gMouseClicked) return;
-    var x = ev.offsetX;
-    var y = ev.offsetY;
-    // console.log(canvasClicked(ev))
-    if (!canvasClicked(ev)) return;
-    dragText(x, y)
-    createCanvas(gMeme.selectedImgId);
-}
+// function onMouseMove(ev) {
+//     if (!gMouseClicked) return;
+//     var x = ev.offsetX;
+//     var y = ev.offsetY;
+//     // console.log(canvasClicked(ev))
+//     if (!canvasClicked(ev)) return;
+//     dragText(x, y)
+//     createCanvas(gMeme.selectedImgId);
+// }
 
-function dragText(x, y) {
-    var dx=x-gMeme.txts[0].x
-    var dy=y-gMeme.txts[0].y
-    gMeme.txts[0].x += dx;
-    gMeme.txts[0].y += dy;
-}
+// function dragText(x, y) {
+//     var dx=x-gMeme.txts[0].x
+//     var dy=y-gMeme.txts[0].y
+//     gMeme.txts[0].x += dx;
+//     gMeme.txts[0].y += dy;
+// }
