@@ -12,7 +12,7 @@ function renderImgs(imgs) {
         <img data-id='${img.id}' src='img/${img.url}' onclick="initMemeEditor(${img.id},this)" alt='meme picture'/>
         `
     })
-    document.querySelector('.gallery-container').innerHTML = strHtml;
+    document.querySelector('.img-gallery').innerHTML = strHtml;
 }
 
 function initMemeEditor(imgId) {
@@ -28,6 +28,6 @@ function toggleView() {
 }
 
 function onFiterImages(value) {
-    var fltrdImgs=filterImages(value);
+    let fltrdImgs = filterImages(value);
     renderImgs(fltrdImgs);
 }
