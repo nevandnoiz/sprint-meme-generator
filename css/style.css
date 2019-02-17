@@ -16,6 +16,8 @@
 
 body {
     background-color: #ececec;
+    min-width: 335px;
+    position: relative
 }
 
 a {
@@ -25,6 +27,10 @@ a {
 
 canvas,select,button {
     cursor: pointer;
+}
+
+main {
+    margin-top: 10px;
 }
 
 /* Gallery: */
@@ -109,11 +115,15 @@ canvas,select,button {
     }
 }
 @media only screen and (max-width: 768px) {
-    body{
-        font-size: 26px;
+    body {
+        font-size: 1em;
+    }
+
+    main {
+        margin-top: 0px;
     }
     h1 {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     canvas {
@@ -201,16 +211,12 @@ canvas,select,button {
     background: #00AE68;
   }
   
-  .btnLightBlue{
-    background: #5DC8CD;
-  }
-  
   .btnOrange{
     background: #FFAA40;
   }
   
-  .btnRed{
-    background: #e00f00f2;
+  .btnGrey {
+    background:#7c7676f2;
   }
   
   .btnFloat:hover {
@@ -226,7 +232,6 @@ canvas,select,button {
     position: relative;
     float: left;
     padding: 0;
-    font-weight: 600;
     text-align: center;
     line-height: 50px;
     border: 1px solid black;
@@ -236,29 +241,35 @@ canvas,select,button {
 
   @media only screen and (max-width: 768px) {
     .button {
-        line-height: 24px;
+        line-height: 33px;
     }
+
     .btnFloat {
-        width: 340px;
-        height: 30px;
-      }
-      .header-button {
+        width: 98vw;
+        height: 40px;
+    }
+    .header-button {
         margin: 5px;
-      }
-      .btnFloat {
+    }
+
+    .btnFloat {
         margin-top: 0px;
         margin-bottom:0px;
-      }
+    }
 
-      .btnFloat:hover {
+    .btnFloat:hover {
         transform: scale(1,1);
         -ms-transform: scale(1,1);
         -webkit-transform: scale(1,1);
         box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
       }
 
-      .button.add-txt-btn {
+    .button.add-txt-btn {
         margin: 0 auto 0;
+    }
+
+    .text-editor {
+        margin: 0 auto;
     }
       
 }
