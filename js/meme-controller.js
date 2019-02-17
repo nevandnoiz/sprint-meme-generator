@@ -174,6 +174,7 @@ function onCanvasClicked(ev) {
 
 function onMouseDownUp(ev) {
     startX = ev.offsetX;
+    console.log(startX)
     startY = ev.offsetY;
     gMouseClicked = !gMouseClicked;
 }
@@ -183,6 +184,7 @@ function onMouseMove(ev) {
     if (!txtClicked(ev)) return;
     ev.preventDefault();
     var mouseX = ev.offsetX;
+    console.log(mouseX)
     var mouseY = ev.offsetY;
     dragText(mouseX, mouseY)
     drawCanvas(gMeme.selectedImgId);
@@ -192,6 +194,7 @@ function onMouseMove(ev) {
 function dragText(x, y) {
     // Put your mousemove stuff here
     var dx = x - startX;
+    console.log(dx);
     var dy = y - startY;
     startX = x;
     startY = y;
