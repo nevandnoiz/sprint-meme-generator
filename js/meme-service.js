@@ -91,10 +91,22 @@ function editTextFontSize(size) {
 
 function moveTextPos(direction) {
     var increment = 10;
-    if (direction === 'up') gMeme.txts[gCurrTxtIdx].y -= increment;
-    else if (direction === 'down') gMeme.txts[gCurrTxtIdx].y += increment;
-    else if (direction === 'left') gMeme.txts[gCurrTxtIdx].x -= increment;
-    else if (direction === 'right') gMeme.txts[gCurrTxtIdx].x += increment;
+    if (direction === 'up') {
+        if (gMeme.txts[gCurrTxtIdx].y===gMeme.txts[gCurrTxtIdx].size) return;
+        gMeme.txts[gCurrTxtIdx].y -= increment;
+    }
+    else if (direction === 'down') {
+        if (gMeme.txts[gCurrTxtIdx].y===gCanvas.height) return;
+        gMeme.txts[gCurrTxtIdx].y += increment;
+    }
+    else if (direction === 'left') {
+        if (gMeme.txts[gCurrTxtIdx].x<gMeme.txts[gCurrTxtIdx].textWidth/2) return;
+        gMeme.txts[gCurrTxtIdx].x -= increment;
+    }
+    else if (direction === 'right') {
+        if (gMeme.txts[gCurrTxtIdx].x>gCanvas.width-gMeme.txts[gCurrTxtIdx].textWidth/2) return;
+        gMeme.txts[gCurrTxtIdx].x += increment;
+    }
 }
 
 function editOutlineWidth(width) {
