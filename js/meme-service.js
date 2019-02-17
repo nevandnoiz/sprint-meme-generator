@@ -7,6 +7,7 @@ var gCtx;
 var gMeme;
 var gFilterOptions = [];
 var gMouseClicked = false;
+var gPrevPos={};
 var gCurrTxtIdx;
 
 function createImage(url, keywords) {

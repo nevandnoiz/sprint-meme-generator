@@ -11,7 +11,7 @@
 
 <body onload="init()">
     <header>
-        <a href="/index.html">
+        <a href="./">
             <h1>Meme Generator</h1>
         </a>
     </header>
@@ -39,9 +39,9 @@
                 </a>
             </div>
             <div class="meme-control flex">
-                <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
-                    onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp(event)"
-                    onmouseup="onMouseDownUp(event)">
+                    <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
+                    onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()"
+                    onmouseout="onMouseOut()">
 
                 </canvas>
                 <div class="grid">
