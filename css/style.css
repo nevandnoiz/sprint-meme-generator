@@ -183,6 +183,20 @@ main {
 @media only screen and (max-width: 1024px) {
     .text-editor {
         height: 250px;
+        min-width: 600px;
+        margin: 10px auto;
+        grid-gap: 15px;
+        grid-template: repeat(5,1fr)/repeat(3,1fr);
+    }
+    .header {
+        height: 130px;
+        line-height: 83px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .text-editor {
+        height: 250px;
         width: 97vw;
         margin: 10px auto;
         grid-gap: 15px;
@@ -231,10 +245,6 @@ main {
     }
     .del-txt-btn{
     grid-area:5/1/5/4;
-    }
-    .header {
-        height: 130px;
-        line-height: 83px;
     }
 }
 
