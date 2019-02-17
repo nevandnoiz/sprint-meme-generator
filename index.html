@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="init()">
+    <header>
+        <a href="/"><h1>Meme Generator</h1></a>
+    </header>
+    <main>
+        <div class="gallery-container">
+            <input list="filter-options" class="filter-input" name="search" onkeyup="onFiterImages(value)">
+            <datalist id="filter-options">
+
+            </datalist>
+            <div class="img-gallery grid">
+            </div>
+        </div>
+        <div class="meme-editor-container hidden">
+            <div class="confirm-modal flex hidden">
+                    Are your sure you want to delete this text?
+                    <div class="confirm-btns flex">
+                        <button onclick="onConfirmDelete()">Yes</button>
+                        <button onclick="toggleView('.confirm-modal')">No</button>
+                    </div>
+            </div>
+            <button onclick="onDiscardMeme()" class="discard-btn">
+                X Discard meme
+            </button>
+            <a href="" onclick="onClickDownload(this)"><button">Download</button></a>
+            <div class="meme-control flex">
+                <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
+                onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp(event)" onmouseup="onMouseDownUp(event)">
+
+                </canvas>
+
+                <div class="text-editor flex">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/util.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/meme-service.js"></script>
+</body>
+
+</html>
