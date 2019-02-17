@@ -3,7 +3,8 @@
 function init() {
     gImgs = createImgs();
     createFilterOptions();
-    renderFilterOptions();
+    renderSearchOptions();
+    renderFilterOptions()
     renderImgs(gImgs);
 }
 
@@ -17,15 +18,27 @@ function renderImgs(imgs) {
     document.querySelector('.img-gallery').innerHTML = strHtml;
 }
 
-function renderFilterOptions() {
+function renderSearchOptions() {
     var strHtml = '';
     gFilterOptions.forEach(function (filterOption) {
         strHtml += `
-        <option value="${filterOption}">${filterOption}</option>
+        <option value="${filterOption.keyword}">${filterOption.keyword}</option>
         `
     })
-    document.querySelector('#filter-options').innerHTML = strHtml;
+    document.querySelector('#search-options').innerHTML = strHtml;
 }
+
+function renderFilterOptions(){
+    var strHtml = '';
+    gFilterOptions.forEach(function (filterOption) {
+        strHtml += `
+        <a style="font-size:${filterOption.popularity}px;" onclick="onFiterImages('${filterOption.keyword}')">${filterOption.keyword}</a>
+        `
+    })
+    document.querySelector('.filter-options').innerHTML = strHtml;
+}
+
+
 
 function onFiterImages(text) {
     var fltrdImgs = filterImages(text);
@@ -159,7 +172,6 @@ function onAddTxt() {
 }
 
 function onCanvasClicked(ev) {
-    console.log(ev);
     if (txtClicked(ev)) {
         renderTxtEditor();
         drawCanvas(gMeme.selectedImgId);
@@ -183,21 +195,20 @@ function onMouseOut(){
 function onMouseMove(ev) {
     if (!gMouseClicked) return;
     if (!txtClicked(ev)) return;
-    var x = parseInt(ev.offsetX);
-    var y = parseInt(ev.offsetY);
+    var x = Math.floor(ev.offsetX);
+    var y = Math.floor(ev.offsetY);
     dragText(x, y)
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function dragText(x, y) {
-    // console.log(x,y)
     if (!gPrevPos.x) gPrevPos.x = x;
     if (!gPrevPos.y) gPrevPos.y = y;
     gMeme.txts[gCurrTxtIdx].x += x - gPrevPos.x;
     gMeme.txts[gCurrTxtIdx].y += y - gPrevPos.y;
     gPrevPos.x = x;
     gPrevPos.y = y;
-    drawCanvas(gMeme.selectedImgId);
-    drawTxt();
 }
 
 function onDiscardMeme() {

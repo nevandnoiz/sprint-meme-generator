@@ -40,7 +40,25 @@ display: flex;
 /* .img-gallery {
 
 } */
-.filter-input {
+
+.filter-options {
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: lightblue;
+    height: 200px;
+    width: 100%;
+    color: darkblue;
+}
+
+.filter-options a{
+    cursor: pointer;
+}
+
+.filter-options a:hover{
+    color: lightcyan;
+}
+
+.search-filter-input {
     margin: 0 auto;
     display: block;
 }
@@ -120,4 +138,6 @@ display: flex;
 .outline-editor {
     justify-content: space-evenly;
 } */
+
+
 

@@ -7,7 +7,7 @@ var gCtx;
 var gMeme;
 var gFilterOptions = [];
 var gMouseClicked = false;
-var gPrevPos={};
+var gPrevPos = {};
 var gCurrTxtIdx;
 
 function createImage(url, keywords) {
@@ -21,45 +21,45 @@ function createImage(url, keywords) {
 function createImgs() {
     var imgs = [];
     imgs.push(
-        createImage('Bad-Luck-Brian.jpg', ['funny', 'nerd']),
-        createImage('Disaster-Girl.jpg', ['funny', 'girl']),
-        createImage('Distracted-Boyfriend.jpg', ['funny', 'boyfriend']),
-        createImage('Doge.jpg', ['surprised', 'doge']),
-        createImage('Evil-Baby.jpg', ['angry', 'baby']),
-        createImage('Futurama-Fry.jpg', ['suspicious', 'futurama']),
-        createImage('Gangnam-Style-PSY.jpg', ['cool', 'gangnam']),
-        createImage('Good-Guy-Putin.jpg', ['funny', 'putin']),
-        createImage('disboy.jpg', ['funny', 'girlfriend']),
-        createImage('Pissed-Off-Obama.jpg', ['angry', 'obama']),
-        createImage('michael-jordan.jpg', ['sad', 'michael jordan']),
-        createImage('Third-World-Skeptical-Kid.jpg', ['suspicious', 'baby']),
-        createImage('Torreshit.jpg', ['funny', 'soccer']),
-        createImage('Y-U-No.jpg', ['angry', 'troll']),
-        createImage('sad-cat.jpg', ['sad', 'cat']),
+        createImage('Bad-Luck-Brian.jpg', ['funny']),
+        createImage('Disaster-Girl.jpg', ['funny']),
+        createImage('Distracted-Boyfriend.jpg', ['funny']),
+        createImage('Doge.jpg', ['surprised']),
+        createImage('Evil-Baby.jpg', ['angry']),
+        createImage('Futurama-Fry.jpg', ['suspicious']),
+        createImage('Gangnam-Style-PSY.jpg', ['cool']),
+        createImage('Good-Guy-Putin.jpg', ['funny']),
+        createImage('disboy.jpg', ['funny']),
+        createImage('Pissed-Off-Obama.jpg', ['angry']),
+        createImage('michael-jordan.jpg', ['sad']),
+        createImage('Third-World-Skeptical-Kid.jpg', ['suspicious']),
+        createImage('Torreshit.jpg', ['funny']),
+        createImage('Y-U-No.jpg', ['angry']),
+        createImage('sad-cat.jpg', ['sad']),
         createImage('Yao-Ming.jpg', ['funny', 'happy']),
-        createImage('2.jpg', ['happy', 'nature']),
-        createImage('003.jpg', ['angry', 'trump']),
-        createImage('004.jpg', ['cute', 'puppys']),
-        createImage('005.jpg', ['cute', 'baby']),
-        createImage('5.jpg', ['cute', 'baby']),
-        createImage('006.jpg', ['tired', 'cat']),
-        createImage('8.jpg', ['funny', 'hat']),
-        createImage('skelet.jpg', ['tired', 'skeleton']),
-        createImage('9.jpg', ['funny', 'baby']),
-        createImage('12.jpg', ['funny', 'zadik']),
-        createImage('drevil.jpg', ['funny', 'drevil']),
-        createImage('img2.jpg', ['happy', 'baby']),
-        createImage('img4.jpg', ['funny', 'trump']),
-        createImage('img5.jpg', ['funny', 'baby']),
-        createImage('img6.jpg', ['funny', 'dog']),
-        createImage('memeban.jpg', ['angry', 'jackie chan']),
-        createImage('img11.jpg', ['happy', 'obama']),
-        createImage('img12.jpg', ['funny', 'sports']),
-        createImage('leo.jpg', ['fun', 'leo']),
-        createImage('meme1.jpg', ['sad', 'morpheus']),
-        createImage('patrick.jpg', ['happy', 'patrick']),
-        createImage('putin.jpg', ['funny', 'putin']),
-        createImage('Oprah-You-Get-A.jpg', ['happy', 'angry', 'joke']),
+        createImage('2.jpg', ['happy']),
+        createImage('003.jpg', ['angry']),
+        createImage('004.jpg', ['cute']),
+        createImage('005.jpg', ['cute']),
+        createImage('5.jpg', ['cute']),
+        createImage('006.jpg', ['tired']),
+        createImage('8.jpg', ['funny']),
+        createImage('skelet.jpg', ['tired']),
+        createImage('9.jpg', ['funny']),
+        createImage('12.jpg', ['funny']),
+        createImage('drevil.jpg', ['funny']),
+        createImage('img2.jpg', ['happy']),
+        createImage('img4.jpg', ['funny']),
+        createImage('img5.jpg', ['funny']),
+        createImage('img6.jpg', ['funny']),
+        createImage('memeban.jpg', ['angry']),
+        createImage('img11.jpg', ['happy']),
+        createImage('img12.jpg', ['funny']),
+        createImage('leo.jpg', ['fun']),
+        createImage('meme1.jpg', ['sad']),
+        createImage('patrick.jpg', ['happy']),
+        createImage('putin.jpg', ['funny']),
+        createImage('Oprah-You-Get-A.jpg', ['happy', 'angry']),
         createImage('One-Does-Not-Simply.jpg', ['fun']),
         createImage('Ancient-Aliens.jpg', ['happy']),
         createImage('Batman-Slapping-Robin.jpg', ['happy']),
@@ -104,6 +104,9 @@ function createFilterOptions() {
             })
         }
     })
+    gFilterOptions.map(function (keyword, idx) {
+        gFilterOptions[idx] = { keyword: keyword, popularity: genRandomInt(16,40) }
+    })
 }
 
 function drawCanvas(imgId) {
@@ -124,17 +127,6 @@ function drawTxt() {
         txt.textWidth = gCtx.measureText(txt.text).width;
     });
 }
-
-// function renderTxt(txt) {
-//     gCtx.font = `${txt.size}px ${txt.fontFamily}`;
-//     gCtx.textAlign = txt.align;
-//     gCtx.fillStyle = txt.color;
-//     // if (txt.isShadow) addTxtShadow(txt);
-//     if (txt.isOutline) editTxtOutline(txt);
-
-//     gCtx.fillText(txt.text, txt.x, txt.y);
-//     gMeme.txts[0].textWidth = gCtx.measureText(txt.text).width;
-// }
 
 function filterImages(text) {
     var searchTxt = text.toLowerCase();
