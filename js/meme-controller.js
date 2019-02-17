@@ -33,7 +33,12 @@ function renderTxtEditor() {
         <button value="center" onclick="onTextAlign(this)">C</button>
         <button value="right" onclick="onTextAlign(this)">R</button>
     </div>
-    <input onchange="onTextUpDown(value)" type="number" value="${txtObj.y}" min="0" max="${gCanvas.height}">
+    <div class="move-text-pos">
+        <button onclick="onMoveTextPos('up')">↑</button>
+        <button onclick="onMoveTextPos('down')">↓</button>
+        <button onclick="onMoveTextPos('left')">←</button>
+        <button onclick="onMoveTextPos('right')">→</button>
+    </div>
     <input id="outline" type="checkbox" onclick="onToggleOutline()">
     <label for="outline">Outline</label>
     Width: <input type="number" value="${txtObj.lineWidth}" min="1" step="1" max="12"
@@ -92,8 +97,8 @@ function onChangeFontSize(size) {
     document.querySelector('.change-font-size span').innerText = size;
 }
 
-function onTextUpDown(y) {
-    moveTextUpDown(y);
+function onMoveTextPos(direction) {
+    moveTextPos(direction);
     drawCanvas(gMeme.selectedImgId);
     drawTxt();
 }

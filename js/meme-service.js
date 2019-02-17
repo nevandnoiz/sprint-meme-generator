@@ -89,8 +89,12 @@ function editTextFontSize(size) {
     gMeme.txts[gCurrTxtIdx].size = size;
 }
 
-function moveTextUpDown(y) {
-    gMeme.txts[gCurrTxtIdx].y = y;
+function moveTextPos(direction) {
+    var increment = 10;
+    if (direction === 'up') gMeme.txts[gCurrTxtIdx].y -= increment;
+    else if (direction === 'down') gMeme.txts[gCurrTxtIdx].y += increment;
+    else if (direction === 'left') gMeme.txts[gCurrTxtIdx].x -= increment;
+    else if (direction === 'right') gMeme.txts[gCurrTxtIdx].x += increment;
 }
 
 function editOutlineWidth(width) {
@@ -115,8 +119,8 @@ function addTxtLine(pos) {
 function txtClicked(ev) {
     var res = gMeme.txts.findIndex(function (txt) {
         return (
-            ev.offsetX >= txt.x-txt.textWidth/2 &&
-            ev.offsetX <= txt.x + txt.textWidth/2 &&
+            ev.offsetX >= txt.x - txt.textWidth / 2 &&
+            ev.offsetX <= txt.x + txt.textWidth / 2 &&
             ev.offsetY <= txt.y &&
             ev.offsetY >= txt.y - txt.size
         )
