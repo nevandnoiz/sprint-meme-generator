@@ -107,6 +107,10 @@ main {
     margin: 1em auto 1em;
 }
 
+.change-text{
+    padding: 0 7px;
+    background-color: whitesmoke;
+}
 
 @media only screen and (max-width: 1024px) {
     .meme-control {
@@ -145,7 +149,6 @@ main {
 
 .header-button {
     justify-content: center;
-    /* gap: 30px; */
 }
 
 .button.add-txt-btn {
@@ -174,12 +177,6 @@ main {
     cursor: pointer;
 }
 
-/* .move-text-pos{
-    height: 40px;
-    width: 40px;
-    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
-} */
-
 @media only screen and (max-width: 1024px) {
     .text-editor {
         height: 250px;
@@ -191,11 +188,11 @@ main {
 
     .change-text{
     grid-area:1/1/1/4;
-    }
-    .change-font{
+}
+.change-font{
     grid-area:2/1/2/1;
-    }
-    .change-txt-color{
+}
+.change-txt-color{
     grid-area:2/2/2/2;
     }
     .change-font-size{
@@ -237,11 +234,6 @@ main {
         line-height: 83px;
     }
 }
-
-/* 
-.outline-editor {
-    justify-content: space-evenly;
-} */
 
 /* FLOAT button */
 .btnFloat {

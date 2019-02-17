@@ -119,10 +119,10 @@ function addTxtLine(pos) {
 function txtClicked(ev) {
     var res = gMeme.txts.findIndex(function (txt) {
         return (
-            ev.offsetX >= txt.x - txt.textWidth / 2 &&
-            ev.offsetX <= txt.x + txt.textWidth / 2 &&
-            ev.offsetY <= txt.y &&
-            ev.offsetY >= txt.y - txt.size
+            ev.offsetX >= txt.x - txt.textWidth &&
+            ev.offsetX <= txt.x + txt.textWidth &&
+            ev.offsetY <= txt.y + 50 &&
+            ev.offsetY >= txt.y - txt.size - 50
         )
     })
     if (res >= 0) {
