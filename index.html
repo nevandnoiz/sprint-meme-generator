@@ -35,21 +35,25 @@
                     <button onclick="toggleView('.confirm-modal')">No</button>
                 </div>
             </div>
-            <button onclick="onDiscardMeme()" class="discard-btn">
-                X Discard meme
-            </button>
-            <a href="" onclick="onClickDownload(this)">
-                <button">Download</button>
-            </a>
+            <div class="header-button grid grid-column grid-center">
+                <a class="discard-btn button btnFloat btnRed" onclick="onDiscardMeme()"> X Discard meme</a>
+                <a class="dl-btn button btnFloat btnOrange" href="" onclick="onClickDownload(this)">
+                    Download
+                </a>
+            </div>
             <div class="meme-control flex">
-                <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
+                    <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
                     onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()"
                     onmouseout="onMouseOut()">
 
                 </canvas>
+                <div class="grid">
+                    <a class="add-txt-btn button btnFloat btnBlueGreen" onclick="onAddTxt()">
+                        + Add New Text
+                    </a>
+                    <div class="text-editor flex">
 
-                <div class="text-editor flex">
-
+                    </div>
                 </div>
             </div>
         </div>

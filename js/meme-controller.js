@@ -61,9 +61,6 @@ function renderTxtEditor() {
     var txtObj = gMeme.txts[gCurrTxtIdx];
     var strHtml =
         `
-        <button class="add-txt-btn" onclick="onAddTxt()">
-        + Add New Text
-    </button>
     <input type="text" placeholder="Your Text" oninput="onInputText(value)" value="${txtObj.text}">
     <select class="change-font" onchange="onChangeFont(value)">
     <option value="Impact">Impact</option>
@@ -218,6 +215,6 @@ function onDiscardMeme() {
 
 function onClickDownload(elLink) {
     createDownloadLink(elLink);
-    var currImg = gImgs.find((img) => img.id===gMeme.selectedImgId);
+    var currImg = gImgs.find((img) => img.id === gMeme.selectedImgId);
     elLink.download = currImg.url;
 }
