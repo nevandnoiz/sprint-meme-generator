@@ -189,4 +189,5 @@ function setEventListeners(){
     gCanvas.addEventListener("touchstart", onMouseDownUp, false);
     gCanvas.addEventListener("touchend", onMouseDownUp, false);
     gCanvas.addEventListener("touchmove", onMouseMove, false);
+    // gCanvas.addEventListener("touchmove", touchOut, event);
 }
