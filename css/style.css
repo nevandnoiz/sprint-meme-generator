@@ -40,6 +40,7 @@ header {
     line-height: 120px;
 }
 
+
 .grid {
 display: grid;
 }
@@ -164,6 +165,7 @@ display: flex;
 
 .header-button {
     justify-content: center;
+    margin-top: 0.8em;
     /* gap: 30px; */
 }
 
@@ -258,11 +260,11 @@ display: flex;
 }
 
   @media only screen and (max-width: 768px) {
+    h1 {
+        font-size: -webkit-xxx-large;
+    }  
     .btnFloat {
-        width: 80vw;
+        width: 340px;
       }
-    .button {
-        margin: 0 6vw 1em;
-    }
 }
 
