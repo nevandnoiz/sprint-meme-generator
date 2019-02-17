@@ -151,3 +151,18 @@ function txtClicked(ev) {
 function createDownloadLink(elLink) {
     elLink.href = gCanvas.toDataURL();
 }
+
+function changeSelectedTxt(direction) {
+    if (direction==='up'){
+    if (gCurrTxtIdx===0) return;
+    gMeme.txts[gCurrTxtIdx].isSelected = false;
+    gCurrTxtIdx--;
+    gMeme.txts[gCurrTxtIdx].isSelected = true;
+    }
+    else if (direction==='down'){
+    if (gCurrTxtIdx===gMeme.txts.length-1) return;
+    gMeme.txts[gCurrTxtIdx].isSelected = false;
+    gCurrTxtIdx++;
+    gMeme.txts[gCurrTxtIdx].isSelected = true;
+    }
+}

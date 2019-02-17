@@ -115,6 +115,10 @@ canvas {
     margin: 0 auto 1em;
 }
 
+.switch-text-btn{
+    display: none;
+}
+
 .change-text{
     padding: 0 7px;
     background-color: whitesmoke;
@@ -239,8 +243,14 @@ canvas {
     grid-area:4/3/4/3;
 }
 .del-txt-btn {
-    grid-area:5/1/5/4;
+    grid-area:5/2/5/4;
     height: 40px;
+}
+.switch-text-btn{
+    display: block;
+}
+.switch-text-btn button{
+font-size:16px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -260,7 +270,7 @@ canvas {
 @media only screen and (max-width: 768px) {
     .text-editor {
         border-radius: 0;
-        height: 250px;
+        height: 320px;
         border-radius:0;
         width: 100vw;
         margin: 10px auto;

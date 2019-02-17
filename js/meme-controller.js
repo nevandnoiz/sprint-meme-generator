@@ -50,6 +50,10 @@ function renderTxtEditor() {
         onclick="onChangeOutlineWidth(value)">
     </div>    
     <input class="outline-color" type="color" value="${txtObj.strokeStyle}" onchange="onChangeOutlineColor(value)">
+    <div class="§">
+        <button onclick="onChangeSelectedTxt('up')">↑</button>
+        <button onclick="onChangeSelectedTxt('down')">↓</button>
+    </div>
     <button class="del-txt-btn" onclick="onDeleteTxt()">X Delete Text</button>
     `
     document.querySelector('.text-editor').innerHTML = strHtml;
@@ -179,4 +183,9 @@ function onClickDownload(elLink) {
     createDownloadLink(elLink);
     var currImg = gImgs.find((img) => img.id === gMeme.selectedImgId);
     elLink.download = currImg.url;
+}
+
+function onChangeSelectedTxt(direction){
+    changeSelectedTxt(direction)
+    renderTxtEditor();
 }
