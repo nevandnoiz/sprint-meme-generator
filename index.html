@@ -10,7 +10,7 @@
 </head>
 
 <body onload="init()">
-        <header class="main-header flex">
+        <header>
             <a href="./">
                 <h1>Meme Generator</h1>
             </a>
@@ -19,6 +19,9 @@
             <datalist id="search-options">
             
             </datalist>
+            <div class="header-button grid grid-center hidden">
+                    <a class="back-btn button btnFloat btnRed" onclick="onBackToGallery()"> Back to gallery</a>
+                </div>
     </header>
     <main>
         <div class="gallery-container">
@@ -29,9 +32,6 @@
             </div>
         </div>
         <div class="meme-editor-container hidden">
-            <div class="header-button grid grid-center">
-                <a class="back-btn button btnFloat btnRed" onclick="onBackToGallery()"> Back to gallery</a>
-            </div>
             <div class="meme-control flex">
                 <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
                     onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()"
