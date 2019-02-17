@@ -36,7 +36,7 @@ header {
     color: #dad6d6;
     font-size: 2.5em;
     text-align: center;
-    height: 120px;
+    height: 160px;
     line-height: 120px;
 }
 
@@ -82,7 +82,7 @@ display: flex;
     border: 1px solid blue;
     border-radius: 10px;
     background-color: lightblue;
-    height: 200px;
+    height: 170px;
     width: 100%;
     color: darkblue;
     margin-bottom: 20px;

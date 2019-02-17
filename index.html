@@ -10,21 +10,21 @@
 </head>
 
 <body onload="init()">
-    <header>
-        <a href="./">
-            <h1>Meme Generator</h1>
-        </a>
+        <header>
+            <a href="./">
+                <h1>Meme Generator</h1>
+            </a>
+            <input placeholder="Search by keyword" list="search-options" class="search-filter-input" name="search"
+                onkeyup="onFiterImages(value)">
+            <datalist id="search-options">
+            
+            </datalist>
     </header>
     <main>
         <div class="gallery-container">
             <div class="filter-options flex">
 
             </div>
-            <input placeholder="Search by keyword" list="search-options" class="search-filter-input" name="search"
-                onkeyup="onFiterImages(value)">
-            <datalist id="search-options">
-
-            </datalist>
             <div class="img-gallery grid">
             </div>
         </div>
