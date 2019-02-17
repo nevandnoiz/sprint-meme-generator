@@ -11,7 +11,7 @@
 
 <body onload="init()">
     <header>
-        <h1>Meme Generator</h1>
+        <a href="/"><h1>Meme Generator</h1></a>
     </header>
     <main>
         <div class="gallery-container">
@@ -23,40 +23,25 @@
             </div>
         </div>
         <div class="meme-editor-container hidden">
-            <button onclick="toggleView()" class="discard-btn">
+            <div class="confirm-modal flex hidden">
+                    Are your sure you want to delete this text?
+                    <div class="confirm-btns flex">
+                        <button onclick="onConfirmDelete()">Yes</button>
+                        <button onclick="toggleView('.confirm-modal')">No</button>
+                    </div>
+            </div>
+            <button onclick="onDiscardMeme()" class="discard-btn">
                 X Discard meme
             </button>
+            <a href="" onclick="onClickDownload(this)"><button">Download</button></a>
             <div class="meme-control flex">
-                <canvas onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()" width="600" height="600" class="meme-canvas">
+                <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
+                onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp(event)" onmouseup="onMouseDownUp(event)">
 
                 </canvas>
+
                 <div class="text-editor flex">
-                    <input type="text" placeholder="Your Text" oninput="onInputText(value)">
-                    <select onchange="onChangeFont(value)">
-                        <option value="Impact" autoselected>Impact</option>
-                        <option value="Arial Black">Arial Black</option>
-                        <option value="Tahoma">Tahoma</option>
-                        <option value="Comic Sans MS">Comic Sans MS</option>
-                    </select>
-                    <input type="color" oninput="onChangeColor(value)">
-                    <div class="font-size-range">
-                        <input oninput="onChangeFontSize(value)" type="range" value="40" min="1" max="120">
-                        <span>40</span>
-                    </div>
-                    <div class="text-aligning">
-                        <button value="left" onclick="onTextAlign(this)">L</button>
-                        <button value="center" onclick="onTextAlign(this)">C</button>
-                        <button value="right" onclick="onTextAlign(this)">R</button>
-                    </div>
-                    <input type="number">
-                    <div class="outline-editor flex">
-                        <input id="outline" type="checkbox" checked onclick="onToggleOutline()">
-                        <label for="outline">Outline</label>
-                        Width: <input type="number" value="3" min="1" step="1" max="12"
-                            onclick="onChangeOutlineWidth(value)">
-                        <input type="color" value="white" onchange="onChangeOutlineColor(value)">
-                    </div>
-                    <button onclick="onDelete()">Delete Text</button>
+
                 </div>
             </div>
         </div>

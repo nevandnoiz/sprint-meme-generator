@@ -1,5 +1,8 @@
 'use strict'
 
+var startX;
+var startY;
+
 function init() {
     gImgs = createImgs();
     createFilterOptions();
@@ -27,106 +30,182 @@ function renderFilterOptions() {
     document.querySelector('#filter-options').innerHTML = strHtml;
 }
 
-function onFiterImages(searchTxt) {
-    let fltrdImgs = filterImages(searchTxt);
-    // if (searchTxt === '') return renderImgs(gImgs);
-    // if (fltrdImgs.length>0) 
+function onFiterImages(text) {
+    var fltrdImgs = filterImages(text);
     renderImgs(fltrdImgs);
 }
 
 function initMemeEditor(imgId) {
-    toggleView();
     gMeme = createMeme(imgId);
-    createCanvas(imgId);
-    // renderTxtsEditor();
+    gCurrTxtIdx = 0;
+    toggleView('.meme-editor-container');
+    toggleView('.gallery-container');
+    drawCanvas(imgId);
+    addTxtLine('top');
+    addTxtLine('bottom');
+    drawTxt();
+    renderTxtEditor();
 }
 
-function onInputText(txt) {
-    editMemeTxt(txt);
-    createCanvas(gMeme.selectedImgId);
+function renderTxtEditor() {
+    var txtObj = gMeme.txts[gCurrTxtIdx];
+    var strHtml =
+        `
+        <button class="add-txt-btn" onclick="onAddTxt()">
+        + Add New Text
+    </button>
+    <input type="text" placeholder="Your Text" oninput="onInputText(value)" value="${txtObj.text}">
+    <select class="change-font" onchange="onChangeFont(value)">
+    <option value="Impact">Impact</option>
+    <option value="Arial Black">Arial Black</option>
+    <option value="Tahoma">Tahoma</option>
+    <option value="Comic Sans MS">Comic Sans MS</option>
+    </select>
+    <input type="color" oninput="onChangeColor(value)" value="${txtObj.color}">
+    <div class="change-font-size">
+    <input oninput="onChangeFontSize(value)" type="range" value="${txtObj.size}" min="1" max="120">
+    <span>${txtObj.size}</span>
+    </div>
+    <div class="text-aligning">
+    <button value="left" onclick="onTextAlign(this)">L</button>
+    <button value="center" onclick="onTextAlign(this)">C</button>
+    <button value="right" onclick="onTextAlign(this)">R</button>
+    </div>
+    <input onchange="onTextUpDown(value)" type="number" value="${txtObj.y}" min="0" max="${gCanvas.height}">
+    <input id="outline" type="checkbox" onclick="onToggleOutline()">
+    <label for="outline">Outline</label>
+    Width: <input type="number" value="${txtObj.lineWidth}" min="1" step="1" max="12"
+    onclick="onChangeOutlineWidth(value)">
+    <input type="color" value="${txtObj.strokeStyle}" onchange="onChangeOutlineColor(value)">
+    <button onclick="onDeleteTxt()">X Delete Text</button>
+    `
+    document.querySelector('.text-editor').innerHTML = strHtml;
+    document.querySelector(`.change-font option[value=${txtObj.fontFamily}]`).selected = true;
+    document.querySelector('#outline').checked = txtObj.isOutline;
+}
+
+function onInputText(text) {
+    editMemeText(text);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onChangeColor(color) {
     editTextColor(color)
-    createCanvas(gMeme.selectedImgId);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onChangeOutlineColor(color) {
     editOutlineColor(color)
-    createCanvas(gMeme.selectedImgId);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onTextAlign(elAlignment) {
-    let alignment = elAlignment.value;
+    var alignment = elAlignment.value;
     editTextAlign(alignment);
-    createCanvas(gMeme.selectedImgId);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
-function onDelete() {
-    deleteTxt(0);
-    document.querySelector('.text-editor').classList.toggle('hidden');
-    createCanvas(gMeme.selectedImgId);
+function onDeleteTxt() {
+    if (gMeme.txts.length < 2) return;
+    toggleView('.confirm-modal');
 }
 
-function renderTxt(txt) {
-    gCtx.font = `${txt.size}px ${txt.fontFamily}`;
-    gCtx.textAlign = txt.align;
-    gCtx.fillStyle = txt.color;
-    // if (txt.isShadow) addTxtShadow(txt);
-    if (txt.isOutline) editTxtOutline(txt);
-
-    gCtx.fillText(txt.text, txt.x, txt.y);
-    gMeme.txts[0].textWidth = gCtx.measureText(txt.text).width;
+function onConfirmDelete() {
+    deleteTxt(gCurrTxtIdx);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
+    renderTxtEditor()
+    toggleView('.confirm-modal');
 }
+
 
 function onChangeFont(font) {
     editTextFont(font);
-    createCanvas(gMeme.selectedImgId);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onChangeFontSize(size) {
     editTextFontSize(size);
-    createCanvas(gMeme.selectedImgId);
-    document.querySelector('.font-size-range span').innerText = size;
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
+    document.querySelector('.change-font-size span').innerText = size;
+}
+
+function onTextUpDown(y) {
+    moveTextUpDown(y);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onChangeOutlineWidth(width) {
     editOutlineWidth(width);
-    createCanvas(gMeme.selectedImgId);
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
+
 function onToggleOutline() {
-    TouggleOutline()
-    createCanvas(gMeme.selectedImgId);
+    toggleOutline()
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
+}
+
+function onAddTxt() {
+    addTxtLine('middle');
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onCanvasClicked(ev) {
-    canvasClicked(ev);
+    if (txtClicked(ev)) {
+        renderTxtEditor();
+        drawCanvas(gMeme.selectedImgId);
+        drawTxt();
+    } else {
+        drawCanvas(gMeme.selectedImgId);
+        drawTxt();
+    }
 }
 
-function toggleView() {
-    document.querySelector('.meme-editor-container').classList.toggle('hidden');
-    document.querySelector('.gallery-container').classList.toggle('hidden');
+function onMouseDownUp(ev) {
+    startX = ev.offsetX;
+    startY = ev.offsetY;
+    gMouseClicked = !gMouseClicked;
 }
 
-// function onMouseDownUp() {
-//     gMouseClicked = !gMouseClicked;
-//     // console.log(gMouseClicked)
-// }
+function onMouseMove(ev) {
+    if (!gMouseClicked) return;
+    if (!txtClicked(ev)) return;
+    ev.preventDefault();
+    var mouseX = ev.offsetX;
+    var mouseY = ev.offsetY;
+    dragText(mouseX, mouseY)
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
+}
 
-// function onMouseMove(ev) {
-//     if (!gMouseClicked) return;
-//     var x = ev.offsetX;
-//     var y = ev.offsetY;
-//     // console.log(canvasClicked(ev))
-//     if (!canvasClicked(ev)) return;
-//     dragText(x, y)
-//     createCanvas(gMeme.selectedImgId);
-// }
+function dragText(x, y) {
+    // Put your mousemove stuff here
+    var dx = x - startX;
+    var dy = y - startY;
+    startX = x;
+    startY = y;
+    gMeme.txts[gCurrTxtIdx].x += dx;
+    gMeme.txts[gCurrTxtIdx].y += dy;
+}
 
-// function dragText(x, y) {
-//     var dx=x-gMeme.txts[0].x
-//     var dy=y-gMeme.txts[0].y
-//     gMeme.txts[0].x += dx;
-//     gMeme.txts[0].y += dy;
-// }
+function onDiscardMeme() {
+    toggleView('.meme-editor-container');
+    toggleView('.gallery-container');
+}
+
+function onClickDownload(elLink) {
+    createDownloadLink(elLink);
+    var currImg = gImgs.find((img) => img.id===gMeme.selectedImgId);
+    elLink.download = currImg.url;
+}
