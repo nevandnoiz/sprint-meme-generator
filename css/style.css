@@ -1,3 +1,15 @@
+@import "reset.css"; 
+
+@font-face {
+    font-family: Nova;
+    src: url('/font/Nova_Flat/NovaFlat.ttf');
+}
+
+@font-face {
+    font-family: Pacifico;
+    src: url('/font/Pacifico/Pacifico-Regular.ttf');
+}
+
 * {
     box-sizing: border-box;
 }
@@ -15,8 +27,10 @@ canvas,select,button {
 /* Helpers: */
 
 header {
-    background-color: darkblue;
-    color: lightblue;
+    font-family: Pacifico,serif;
+    background-color: #cb7443;
+    color: #3b484d;
+    font-size: 2em;
     text-align: center;
     height: 90px;
     line-height: 90px;
