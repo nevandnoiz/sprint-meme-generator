@@ -64,7 +64,7 @@ function createImgs() {
 }
 
 function createFilterOptions() {
-    if(getFromStorage('keywords')) return gFilterOptions=getFromStorage('keywords');
+    if (getFromStorage('keywords')) return gFilterOptions = getFromStorage('keywords');
     gImgs.forEach(function (img) {
         var keywords = img.keywords;
         if (keywords.length === 1) {
@@ -77,7 +77,7 @@ function createFilterOptions() {
         }
     })
     gFilterOptions.map(function (keyword, idx) {
-        gFilterOptions[idx] = { keyword: keyword, popularity: genRandomInt(20,72) }
+        gFilterOptions[idx] = { keyword: keyword, popularity: genRandomInt(20, 72) }
     })
     saveToStorage('keywords', gFilterOptions);
 }

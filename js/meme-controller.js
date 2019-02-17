@@ -12,7 +12,6 @@ function initMemeEditor(imgId) {
     addTxtLine('bottom');
     drawTxt();
     renderTxtEditor();
-    setEventListeners();
 }
 
 function renderTxtEditor() {
@@ -180,18 +179,4 @@ function onClickDownload(elLink) {
     createDownloadLink(elLink);
     var currImg = gImgs.find((img) => img.id === gMeme.selectedImgId);
     elLink.download = currImg.url;
-}
-
-function setEventListeners(){
-    gCanvas.addEventListener("click", onCanvasClicked, false);
-    gCanvas.addEventListener("mousedown", onMouseDownUp, false);
-    gCanvas.addEventListener("mouseout", onMouseOut, false);
-    gCanvas.addEventListener("mouseup", onMouseDownUp, false);
-    gCanvas.addEventListener("mousemove", onMouseMove, false);
-
-    gCanvas.addEventListener("touchstart", onCanvasClicked, false);
-    gCanvas.addEventListener("touchstart", onMouseDownUp, false);
-    gCanvas.addEventListener("touchend", onMouseDownUp, false);
-    gCanvas.addEventListener("touchmove", onMouseMove, false);
-    // gCanvas.addEventListener("touchmove", touchOut, event);
 }
