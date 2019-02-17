@@ -87,9 +87,9 @@ main {
 
 .img-gallery>img:hover {
     /* box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22); */
-    transform: scale(1.1,1.1);
-    -ms-transform: scale(1.1,1.1);
-    -webkit-transform: scale(1.1,1.1);
+    transform: scale(1.05,1.05);
+    -ms-transform:scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
     box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
     /* box-shadow: 0 0 10px 6px rgba(0, 140, 186, 0.5); */
 }
@@ -162,13 +162,14 @@ main {
 
 .text-editor {
     height: 380px;
-    width: 250px;
+    width: 380px;
     margin: 0 4em;
     padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
     background-color:#cdcdcd;
 }
+
 
 .text-editor input{
     cursor: pointer;
@@ -179,11 +180,61 @@ main {
     width: 40px;
     grid-template: repeat(3, 1fr)/repeat(3, 1fr);
 } */
+.change-text {
+    grid-area:1/1/1/4;
+    height: 40px;
+}
+.change-font {
+    grid-area:2/1/2/1;
+    height: 40px;
+}
+.change-txt-color {
+    grid-area:2/2/2/2;
+}
+.change-font-size {
+    grid-area:2/3/2/3;
+}
+.text-aligning {
+    grid-area:3/1/3/1;
+}
+.move-text-pos {
+    grid-area:3/2/3/4;
+    grid-template: 1fr 1fr/repeat(3,1fr);
+}
+.move-text-pos .up {
+    grid-area:1/2/1/2;
+    height: 40px;
+}
+.move-text-pos .down {
+    grid-area:2/2/2/2;
+    height: 40px;
+}
+.move-text-pos .left {
+    grid-area:2/1/2/1;
+    height: 40px;
+}
+.move-text-pos .right {
+    grid-area:2/3/2/4;
+    height: 40px;
+}
+.outline-checkbox {
+    grid-area:4/1/4/1;
+}
+.outline-width {
+    grid-area:4/2/4/2;
+}
+.outline-color {
+    grid-area:4/3/4/3;
+}
+.del-txt-btn {
+    grid-area:5/1/5/4;
+    height: 40px;
+}
 
 @media only screen and (max-width: 1024px) {
     .text-editor {
         height: 250px;
-        min-width: 600px;
+        width: 600px;
         margin: 10px auto;
         grid-gap: 15px;
         grid-template: repeat(5,1fr)/repeat(3,1fr);
@@ -201,50 +252,6 @@ main {
         margin: 10px auto;
         grid-gap: 15px;
         grid-template: repeat(5,1fr)/repeat(3,1fr);
-    }
-
-    .change-text{
-    grid-area:1/1/1/4;
-    }
-    .change-font{
-    grid-area:2/1/2/1;
-    }
-    .change-txt-color{
-    grid-area:2/2/2/2;
-    }
-    .change-font-size{
-    grid-area:2/3/2/3;
-    }
-    .text-aligning{
-    grid-area:3/1/3/1;
-    }
-    .move-text-pos{
-    grid-area:3/2/3/4;
-    grid-template: 1fr 1fr/repeat(3,1fr);
-    }
-    .move-text-pos .up{
-    grid-area:1/2/1/2;
-    }
-    .move-text-pos .down{
-    grid-area:2/2/2/2;
-    }
-    .move-text-pos .left{
-    grid-area:2/1/2/1;
-    }
-    .move-text-pos .right{
-    grid-area:2/3/2/4;
-    }
-    .outline-checkbox{
-    grid-area:4/1/4/1;
-    }
-    .outline-width{
-    grid-area:4/2/4/2;
-    }
-    .outline-color{
-    grid-area:4/3/4/3;
-    }
-    .del-txt-btn{
-    grid-area:5/1/5/4;
     }
 }
 
