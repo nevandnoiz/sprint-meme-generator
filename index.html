@@ -20,7 +20,8 @@
             <div class="filter-options flex">
 
             </div>
-            <input placeholder="Search by keyword" list="search-options" class="search-filter-input" name="search" onkeyup="onFiterImages(value)">
+            <input placeholder="Search by keyword" list="search-options" class="search-filter-input" name="search"
+                onkeyup="onFiterImages(value)">
             <datalist id="search-options">
 
             </datalist>
@@ -35,25 +36,24 @@
                     <button onclick="toggleView('.confirm-modal')">No</button>
                 </div>
             </div>
-            <div class="header-button grid grid-column grid-center">
-                <a class="discard-btn button btnFloat btnRed" onclick="onDiscardMeme()"> X Discard meme</a>
-                <a class="dl-btn button btnFloat btnOrange" href="" onclick="onClickDownload(this)">
-                    Download
-                </a>
+            <div class="header-button grid grid-center">
+                <a class="discard-btn button btnFloat btnRed" onclick="onDiscardMeme()">Discard meme</a>
             </div>
             <div class="meme-control flex">
-                    <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
+                <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
                     onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()"
                     onmouseout="onMouseOut()">
 
                 </canvas>
                 <div class="grid">
-                    <a class="add-txt-btn button btnFloat btnBlueGreen" onclick="onAddTxt()">
-                        + Add New Text
-                    </a>
                     <div class="text-editor flex">
 
                     </div>
+                    <a class="add-txt-btn button btnFloat btnBlueGreen" onclick="onAddTxt()">Add New Text
+                    </a>
+                    <a class="dl-btn button btnFloat btnOrange" href="" onclick="onClickDownload(this)">
+                        Download
+                    </a>
                 </div>
             </div>
         </div>

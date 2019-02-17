@@ -4,7 +4,7 @@ function init() {
     gImgs = createImgs();
     createFilterOptions();
     renderSearchOptions();
-    renderFilterOptions()
+    renderFilterOptions();
     renderImgs(gImgs);
 }
 
@@ -67,10 +67,10 @@ function renderTxtEditor() {
         `
     <input type="text" placeholder="Your Text" oninput="onInputText(value)" value="${txtObj.text}">
     <select class="change-font" onchange="onChangeFont(value)">
-    <option value="Impact">Impact</option>
-    <option value="Arial Black">Arial Black</option>
-    <option value="Tahoma">Tahoma</option>
-    <option value="Comic Sans MS">Comic Sans MS</option>
+        <option value="Impact">Impact</option>
+        <option value="Arial Black">Arial Black</option>
+        <option value="Tahoma">Tahoma</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
     </select>
     <input type="color" oninput="onChangeColor(value)" value="${txtObj.color}">
     <div class="change-font-size">

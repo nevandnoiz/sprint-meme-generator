@@ -14,6 +14,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #ececec;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -27,14 +31,13 @@ canvas,select,button {
 /* Helpers: */
 
 header {
+    background-color: #3b3c3c;
     font-family: Pacifico,serif;
-    background-color: #cb7443;
-    color: #3b484d;
-    font-size: 2em;
+    color: #dad6d6;
+    font-size: 2.5em;
     text-align: center;
-    height: 90px;
-    line-height: 90px;
-    margin-bottom: 30px;
+    height: 120px;
+    line-height: 120px;
 }
 
 .grid {
@@ -132,6 +135,10 @@ display: flex;
     /* flex-wrap:wrap; */
 }
 
+.dl-btn {
+    margin: 1em auto 1em;
+}
+
 
 @media only screen and (max-width: 1024px) {
     .meme-control {
@@ -174,11 +181,12 @@ display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    height: 500px;
+    height: 380px;
     width: 250px;
     margin: 0 4em;
     padding: 10px;
     border: 2px solid black;
+    background-color:#cdcdcd;
 }
 
 .text-editor input{
@@ -241,10 +249,9 @@ display: flex;
   }
   
   .btnFloat:hover {
-    margin-top: -2px;
-    transform: scale(1.1,1.1);
-    -ms-transform: scale(1.1,1.1);
-    -webkit-transform: scale(1.1,1.1);
+    transform: scale(1.05,1.05);
+    -ms-transform: scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
     box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.25);
   }
 
@@ -254,7 +261,7 @@ display: flex;
     position: relative;
     float: left;
     padding: 0;
-    margin: 10px 20px 10px 0;
+    /* margin: 10px 20px 10px 0; */
     font-weight: 600;
     text-align: center;
     line-height: 50px;
