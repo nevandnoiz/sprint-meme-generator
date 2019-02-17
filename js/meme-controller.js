@@ -19,14 +19,14 @@ function renderTxtEditor() {
     var txtObj = gMeme.txts[gCurrTxtIdx];
     var strHtml =
         `
-    <input type="text" placeholder="Your Text" oninput="onInputText(value)" value="${txtObj.text}">
+    <input class="change-text" type="text" placeholder="Your Text" oninput="onInputText(value)" value="${txtObj.text}">
     <select class="change-font" onchange="onChangeFont(value)">
         <option value="Impact">Impact</option>
         <option value="Arial Black">Arial Black</option>
         <option value="Tahoma">Tahoma</option>
         <option value="Comic Sans MS">Comic Sans MS</option>
     </select>
-    <input type="color" oninput="onChangeColor(value)" value="${txtObj.color}">
+    <input class="change-txt-color" type="color" oninput="onChangeColor(value)" value="${txtObj.color}">
     <div class="change-font-size">
         <input oninput="onChangeFontSize(value)" type="range" value="${txtObj.size}" min="1" max="120">
         <span>${txtObj.size}</span>
@@ -37,17 +37,21 @@ function renderTxtEditor() {
         <button value="right" onclick="onTextAlign(this)">R</button>
     </div>
     <div class="move-text-pos grid">
-        <button onclick="onMoveTextPos('up')">↑</button>
-        <button onclick="onMoveTextPos('down')">↓</button>
-        <button onclick="onMoveTextPos('left')">←</button>
-        <button onclick="onMoveTextPos('right')">→</button>
+        <button class="up" onclick="onMoveTextPos('up')">↑</button>
+        <button class="down" onclick="onMoveTextPos('down')">↓</button>
+        <button class="left" onclick="onMoveTextPos('left')">←</button>
+        <button class="right" onclick="onMoveTextPos('right')">→</button>
     </div>
-    <input id="outline" type="checkbox" onclick="onToggleOutline()">
-    <label for="outline">Outline</label>
-    Width: <input type="number" value="${txtObj.lineWidth}" min="1" step="1" max="12"
-    onclick="onChangeOutlineWidth(value)">
-    <input type="color" value="${txtObj.strokeStyle}" onchange="onChangeOutlineColor(value)">
-    <button onclick="onDeleteTxt()">X Delete Text</button>
+    <div class="outline-checkbox">
+        <input id="outline" type="checkbox" onclick="onToggleOutline()">
+        <label for="outline">Outline</label>
+    </div>    
+    <div class="outline-width">
+        <input type="number" value="${txtObj.lineWidth}" min="1" step="1" max="12"
+        onclick="onChangeOutlineWidth(value)">
+    </div>    
+    <input class="outline-color" type="color" value="${txtObj.strokeStyle}" onchange="onChangeOutlineColor(value)">
+    <button class="del-txt-btn" onclick="onDeleteTxt()">X Delete Text</button>
     `
     document.querySelector('.text-editor').innerHTML = strHtml;
     document.querySelector(`.change-font option[value=${txtObj.fontFamily}]`).selected = true;

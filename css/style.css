@@ -161,9 +161,6 @@ main {
 }
 
 .text-editor {
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
     height: 380px;
     width: 250px;
     margin: 0 4em;
@@ -185,11 +182,56 @@ main {
 
 @media only screen and (max-width: 1024px) {
     .text-editor {
-        height: 120px;
+        height: 250px;
         width: 97vw;
         margin: 10px auto;
+        grid-gap: 15px;
+        grid-template: repeat(5,1fr)/repeat(3,1fr);
     }
 
+    .change-text{
+    grid-area:1/1/1/4;
+    }
+    .change-font{
+    grid-area:2/1/2/1;
+    }
+    .change-txt-color{
+    grid-area:2/2/2/2;
+    }
+    .change-font-size{
+    grid-area:2/3/2/3;
+    }
+    .text-aligning{
+    grid-area:3/1/3/1;
+    }
+    .move-text-pos{
+    grid-area:3/2/3/4;
+    grid-template: 1fr 1fr/repeat(3,1fr);
+    }
+    .move-text-pos .up{
+    grid-area:1/2/1/2;
+    }
+    .move-text-pos .down{
+    grid-area:2/2/2/2;
+    }
+    .move-text-pos .left{
+    grid-area:2/1/2/1;
+    }
+    .move-text-pos .right{
+    grid-area:2/3/2/4;
+    }
+    .outline-checkbox{
+    grid-area:4/1/4/1;
+    }
+    .outline-width{
+    grid-area:4/2/4/2;
+    }
+    .outline-color{
+    grid-area:4/3/4/3;
+    }
+    .del-txt-btn{
+    grid-area:5/1/5/4;
+    }
     .header {
         height: 130px;
         line-height: 83px;
@@ -212,6 +254,7 @@ main {
     height: 50px;
     border-radius: 5px;
     transition: all 0.2s ;
+    color: #eceaed;
   }
   
   .btnBlueGreen{
@@ -248,11 +291,11 @@ main {
 
   @media only screen and (max-width: 768px) {
     .button {
-        line-height: 33px;
+        line-height: 40px;
     }
 
     .btnFloat {
-        width: 98vw;
+        width: 100vw;
         height: 40px;
     }
     .header-button {
@@ -262,6 +305,7 @@ main {
     .btnFloat {
         margin-top: 0px;
         margin-bottom:0px;
+        font-size: 20px;
     }
 
     .btnFloat:hover {
