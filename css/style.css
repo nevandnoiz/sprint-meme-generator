@@ -156,12 +156,19 @@ canvas,select,button {
     margin: 0 4em;
     padding: 10px;
     border: 2px solid black;
+    border-radius: 10px;
     background-color:#cdcdcd;
 }
 
 .text-editor input{
     cursor: pointer;
 }
+
+/* .move-text-pos{
+    height: 40px;
+    width: 40px;
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+} */
 
 @media only screen and (max-width: 1024px) {
     .text-editor {
