@@ -7,7 +7,7 @@ a {
     color: inherit;
 }
 
-canvas,select,input,button {
+canvas,select,button {
     cursor: pointer;
 }
 
@@ -59,12 +59,15 @@ display: flex;
 } */
 
 .filter-options {
+    justify-content: space-evenly;
+    align-items: center;
     border: 1px solid blue;
     border-radius: 10px;
     background-color: lightblue;
     height: 200px;
     width: 100%;
     color: darkblue;
+    margin-bottom: 20px;
 }
 
 .filter-options a{
@@ -138,11 +141,6 @@ display: flex;
     }
 }
 
-
-/* canvas {
-    width: 100%;
-} */
-
 .header-button {
     justify-content: center;
     /* gap: 30px; */
@@ -167,6 +165,10 @@ display: flex;
     margin: 0 4em;
     padding: 10px;
     border: 2px solid black;
+}
+
+.text-editor input{
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1024px) {

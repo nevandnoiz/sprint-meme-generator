@@ -105,7 +105,7 @@ function createFilterOptions() {
         }
     })
     gFilterOptions.map(function (keyword, idx) {
-        gFilterOptions[idx] = { keyword: keyword, popularity: genRandomInt(16,40) }
+        gFilterOptions[idx] = { keyword: keyword, popularity: genRandomInt(20,72) }
     })
 }
 

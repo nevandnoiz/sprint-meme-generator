@@ -28,17 +28,21 @@ function renderSearchOptions() {
     document.querySelector('#search-options').innerHTML = strHtml;
 }
 
-function renderFilterOptions(){
+function renderFilterOptions() {
     var strHtml = '';
     gFilterOptions.forEach(function (filterOption) {
         strHtml += `
-        <a style="font-size:${filterOption.popularity}px;" onclick="onFiterImages('${filterOption.keyword}')">${filterOption.keyword}</a>
+        <a style="font-size:${filterOption.popularity}px" 
+        onclick="onClickFilter('${filterOption.keyword}')">${filterOption.keyword}</a>
         `
     })
     document.querySelector('.filter-options').innerHTML = strHtml;
 }
 
-
+function onClickFilter(searchTxt) {
+    document.querySelector('.search-filter-input').value = searchTxt;
+    onFiterImages(searchTxt);
+}
 
 function onFiterImages(text) {
     var fltrdImgs = filterImages(text);
@@ -184,9 +188,9 @@ function onMouseDownUp() {
     gPrevPos = {};
 }
 
-function onMouseOut(){
+function onMouseOut() {
     if (!gMouseClicked) return;
-    gMouseClicked = !gMouseClicked; 
+    gMouseClicked = !gMouseClicked;
 }
 
 function onMouseMove(ev) {
