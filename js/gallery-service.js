@@ -18,15 +18,11 @@ function createImgs() {
         createImage('Bad-Luck-Brian.jpg', ['funny']),
         createImage('Disaster-Girl.jpg', ['funny']),
         createImage('Distracted-Boyfriend.jpg', ['funny']),
-        createImage('Doge.jpg', ['surprised']),
         createImage('Evil-Baby.jpg', ['angry']),
-        createImage('Futurama-Fry.jpg', ['suspicious']),
-        createImage('Gangnam-Style-PSY.jpg', ['cool']),
         createImage('Good-Guy-Putin.jpg', ['funny']),
         createImage('disboy.jpg', ['funny']),
         createImage('Pissed-Off-Obama.jpg', ['angry']),
         createImage('michael-jordan.jpg', ['sad']),
-        createImage('Third-World-Skeptical-Kid.jpg', ['suspicious']),
         createImage('Torreshit.jpg', ['funny']),
         createImage('Y-U-No.jpg', ['angry']),
         createImage('sad-cat.jpg', ['sad']),
@@ -44,6 +40,7 @@ function createImgs() {
         createImage('drevil.jpg', ['funny']),
         createImage('img2.jpg', ['happy']),
         createImage('img4.jpg', ['funny']),
+        createImage('Third-World-Skeptical-Kid.jpg', ['suspicious']),
         createImage('img5.jpg', ['funny']),
         createImage('img6.jpg', ['funny']),
         createImage('memeban.jpg', ['angry']),
@@ -55,6 +52,9 @@ function createImgs() {
         createImage('putin.jpg', ['funny']),
         createImage('Oprah-You-Get-A.jpg', ['happy', 'angry']),
         createImage('One-Does-Not-Simply.jpg', ['fun']),
+        createImage('Futurama-Fry.jpg', ['suspicious']),
+        createImage('Gangnam-Style-PSY.jpg', ['cool']),
+        createImage('Doge.jpg', ['surprised']),
         createImage('Ancient-Aliens.jpg', ['happy']),
         createImage('Batman-Slapping-Robin.jpg', ['happy']),
         createImage('Mocking-Spongebob.jpg', ['happy']),
@@ -64,6 +64,7 @@ function createImgs() {
 }
 
 function createFilterOptions() {
+    if(getFromStorage('keywords')) return gFilterOptions=getFromStorage('keywords');
     gImgs.forEach(function (img) {
         var keywords = img.keywords;
         if (keywords.length === 1) {
@@ -78,6 +79,7 @@ function createFilterOptions() {
     gFilterOptions.map(function (keyword, idx) {
         gFilterOptions[idx] = { keyword: keyword, popularity: genRandomInt(20,72) }
     })
+    saveToStorage('keywords', gFilterOptions);
 }
 
 function filterImages(text) {

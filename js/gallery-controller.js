@@ -30,18 +30,22 @@ function renderSearchOptions() {
 
 function renderFilterOptions() {
     var strHtml = '';
-    gFilterOptions.forEach(function (filterOption) {
+    var lessOptionsList = gFilterOptions.slice(0, 5);
+    lessOptionsList.forEach(function (filterOption, idx) {
         strHtml += `
         <a style="font-size:${filterOption.popularity}px" 
-        onclick="onClickFilter('${filterOption.keyword}')">${filterOption.keyword}</a>
+        onclick="onClickFilter('${filterOption.keyword}',${idx})">${filterOption.keyword}</a>
         `
     })
     document.querySelector('.filter-options').innerHTML = strHtml;
 }
 
-function onClickFilter(searchTxt) {
+function onClickFilter(searchTxt, idx) {
+    gFilterOptions[idx].popularity += 2;
+    saveToStorage('keywords', gFilterOptions);
     document.querySelector('.search-filter-input').value = searchTxt;
     onFiterImages(searchTxt);
+    renderFilterOptions();
 }
 
 function onFiterImages(text) {
