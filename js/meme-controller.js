@@ -12,6 +12,7 @@ function initMemeEditor(imgId) {
     addTxtLine('bottom');
     drawTxt();
     renderTxtEditor();
+    setEventListeners();
 }
 
 function renderTxtEditor() {
@@ -35,7 +36,7 @@ function renderTxtEditor() {
         <button value="center" onclick="onTextAlign(this)">C</button>
         <button value="right" onclick="onTextAlign(this)">R</button>
     </div>
-    <div class="move-text-pos">
+    <div class="move-text-pos grid">
         <button onclick="onMoveTextPos('up')">↑</button>
         <button onclick="onMoveTextPos('down')">↓</button>
         <button onclick="onMoveTextPos('left')">←</button>
@@ -175,4 +176,17 @@ function onClickDownload(elLink) {
     createDownloadLink(elLink);
     var currImg = gImgs.find((img) => img.id === gMeme.selectedImgId);
     elLink.download = currImg.url;
+}
+
+function setEventListeners(){
+    gCanvas.addEventListener("click", onCanvasClicked, false);
+    gCanvas.addEventListener("mousedown", onMouseDownUp, false);
+    gCanvas.addEventListener("mouseout", onMouseOut, false);
+    gCanvas.addEventListener("mouseup", onMouseDownUp, false);
+    gCanvas.addEventListener("mousemove", onMouseMove, false);
+
+    gCanvas.addEventListener("touchstart", onCanvasClicked, false);
+    gCanvas.addEventListener("touchstart", onMouseDownUp, false);
+    gCanvas.addEventListener("touchend", onMouseDownUp, false);
+    gCanvas.addEventListener("touchmove", onMouseMove, false);
 }
