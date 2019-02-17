@@ -1,54 +1,5 @@
 'use strict'
 
-function init() {
-    gImgs = createImgs();
-    createFilterOptions();
-    renderSearchOptions();
-    renderFilterOptions()
-    renderImgs(gImgs);
-}
-
-function renderImgs(imgs) {
-    var strHtml = '';
-    imgs.forEach(function (img) {
-        strHtml += `
-        <img data-id='${img.id}' src='img/${img.url}' onclick="initMemeEditor(${img.id},this)" alt='meme picture'/>
-        `
-    })
-    document.querySelector('.img-gallery').innerHTML = strHtml;
-}
-
-function renderSearchOptions() {
-    var strHtml = '';
-    gFilterOptions.forEach(function (filterOption) {
-        strHtml += `
-        <option value="${filterOption.keyword}">${filterOption.keyword}</option>
-        `
-    })
-    document.querySelector('#search-options').innerHTML = strHtml;
-}
-
-function renderFilterOptions() {
-    var strHtml = '';
-    gFilterOptions.forEach(function (filterOption) {
-        strHtml += `
-        <a style="font-size:${filterOption.popularity}px" 
-        onclick="onClickFilter('${filterOption.keyword}')">${filterOption.keyword}</a>
-        `
-    })
-    document.querySelector('.filter-options').innerHTML = strHtml;
-}
-
-function onClickFilter(searchTxt) {
-    document.querySelector('.search-filter-input').value = searchTxt;
-    onFiterImages(searchTxt);
-}
-
-function onFiterImages(text) {
-    var fltrdImgs = filterImages(text);
-    renderImgs(fltrdImgs);
-}
-
 function initMemeEditor(imgId) {
     gMeme = createMeme(imgId);
     gCurrTxtIdx = 0;
@@ -67,20 +18,20 @@ function renderTxtEditor() {
         `
     <input type="text" placeholder="Your Text" oninput="onInputText(value)" value="${txtObj.text}">
     <select class="change-font" onchange="onChangeFont(value)">
-    <option value="Impact">Impact</option>
-    <option value="Arial Black">Arial Black</option>
-    <option value="Tahoma">Tahoma</option>
-    <option value="Comic Sans MS">Comic Sans MS</option>
+        <option value="Impact">Impact</option>
+        <option value="Arial Black">Arial Black</option>
+        <option value="Tahoma">Tahoma</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
     </select>
     <input type="color" oninput="onChangeColor(value)" value="${txtObj.color}">
     <div class="change-font-size">
-    <input oninput="onChangeFontSize(value)" type="range" value="${txtObj.size}" min="1" max="120">
-    <span>${txtObj.size}</span>
+        <input oninput="onChangeFontSize(value)" type="range" value="${txtObj.size}" min="1" max="120">
+        <span>${txtObj.size}</span>
     </div>
     <div class="text-aligning">
-    <button value="left" onclick="onTextAlign(this)">L</button>
-    <button value="center" onclick="onTextAlign(this)">C</button>
-    <button value="right" onclick="onTextAlign(this)">R</button>
+        <button value="left" onclick="onTextAlign(this)">L</button>
+        <button value="center" onclick="onTextAlign(this)">C</button>
+        <button value="right" onclick="onTextAlign(this)">R</button>
     </div>
     <input onchange="onTextUpDown(value)" type="number" value="${txtObj.y}" min="0" max="${gCanvas.height}">
     <input id="outline" type="checkbox" onclick="onToggleOutline()">
@@ -122,17 +73,11 @@ function onTextAlign(elAlignment) {
 
 function onDeleteTxt() {
     if (gMeme.txts.length < 2) return;
-    toggleView('.confirm-modal');
-}
-
-function onConfirmDelete() {
     deleteTxt(gCurrTxtIdx);
     drawCanvas(gMeme.selectedImgId);
     drawTxt();
     renderTxtEditor()
-    toggleView('.confirm-modal');
 }
-
 
 function onChangeFont(font) {
     editTextFont(font);
@@ -212,7 +157,7 @@ function dragText(x, y) {
     gPrevPos.y = y;
 }
 
-function onDiscardMeme() {
+function onBackToGallery() {
     toggleView('.meme-editor-container');
     toggleView('.gallery-container');
 }

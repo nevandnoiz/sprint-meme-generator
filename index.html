@@ -28,15 +28,8 @@
             </div>
         </div>
         <div class="meme-editor-container hidden">
-            <div class="confirm-modal flex hidden">
-                Are your sure you want to delete this text?
-                <div class="confirm-btns flex">
-                    <button onclick="onConfirmDelete()">Yes</button>
-                    <button onclick="toggleView('.confirm-modal')">No</button>
-                </div>
-            </div>
             <div class="header-button grid grid-column grid-center">
-                <a class="discard-btn button btnFloat btnRed" onclick="onDiscardMeme()"> X Discard meme</a>
+                <a class="back-btn button btnFloat btnRed" onclick="onBackToGallery()"> Back to gallery</a>
                 <a class="dl-btn button btnFloat btnOrange" href="" onclick="onClickDownload(this)">
                     Download
                 </a>
@@ -44,12 +37,13 @@
             <div class="meme-control flex">
                     <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
                     onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()"
+                    touchmove="onMouseMove(event)" touchend="onMouseDownUp()" touchstart="onMouseDownUp()"
                     onmouseout="onMouseOut()">
 
                 </canvas>
                 <div class="grid">
                     <a class="add-txt-btn button btnFloat btnBlueGreen" onclick="onAddTxt()">
-                        + Add New Text
+                        Add New Text
                     </a>
                     <div class="text-editor flex">
 
@@ -59,6 +53,8 @@
         </div>
     </main>
     <script src="js/util.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/gallery-service.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/meme-service.js"></script>
 </body>

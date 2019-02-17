@@ -164,7 +164,7 @@ display: flex;
     margin:1em auto 1em;
 }
 
-.discard-btn {
+.back-btn {
     margin:0 auto;
     display: inline-block;
     margin-bottom: 20px;
@@ -193,19 +193,6 @@ display: flex;
     }
 }
 
-.confirm-modal {
-    position: fixed;
-    background-color: lightgray;
-    left: 40%;    
-    top: 35%;    
-    border: 2px solid darkslategrey;
-    width: 300px;
-    height: 180px;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 40px;
-    align-items: center;
-}
 /* 
 .outline-editor {
     justify-content: space-evenly;
