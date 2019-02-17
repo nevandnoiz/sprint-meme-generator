@@ -41,7 +41,9 @@ function renderFilterOptions() {
 }
 
 function onClickFilter(searchTxt, idx) {
-    gFilterOptions[idx].popularity += 2;
+    if (gFilterOptions[idx].popularity < 140){
+        gFilterOptions[idx].popularity += 2;
+    } 
     saveToStorage('keywords', gFilterOptions);
     document.querySelector('.search-filter-input').value = searchTxt;
     onFiterImages(searchTxt);
