@@ -95,6 +95,9 @@ main {
 }
 
 /*Meme Editor: */
+canvas {
+    border-radius: 10px;
+}
 
 .meme-control {
     /* flex-direction:row; */
@@ -104,7 +107,7 @@ main {
 }
 
 .dl-btn {
-    margin: 1em auto 1em;
+    margin: 0 auto 1em;
 }
 
 .change-text{
@@ -152,7 +155,7 @@ main {
 }
 
 .button.add-txt-btn {
-    margin:1em auto 1em;
+    margin:10px auto 1em;
 }
 
 .back-btn {
@@ -165,7 +168,7 @@ main {
 
 .text-editor {
     height: 380px;
-    width: 380px;
+    width: 400px;
     margin: 0 4em;
     padding: 10px;
     border: 2px solid black;
@@ -250,6 +253,7 @@ main {
 
 @media only screen and (max-width: 768px) {
     .text-editor {
+        border-radius: 0;
         height: 250px;
         width: 100vw;
         margin: 10px auto;
@@ -394,6 +398,6 @@ display: flex;
     width: 100%;
     text-align: center;
     font: normal 18px sans-serif;
-    /* padding: 45px;
-    margin-top: 80px; */
+    padding: 20px;
+    /* margin-top: 80px; */
 }
