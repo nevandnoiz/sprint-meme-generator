@@ -1,8 +1,5 @@
 'use strict'
 
-var startX;
-var startY;
-
 function init() {
     gImgs = createImgs();
     createFilterOptions();
@@ -162,6 +159,7 @@ function onAddTxt() {
 }
 
 function onCanvasClicked(ev) {
+    console.log(ev);
     if (txtClicked(ev)) {
         renderTxtEditor();
         drawCanvas(gMeme.selectedImgId);
@@ -172,34 +170,34 @@ function onCanvasClicked(ev) {
     }
 }
 
-function onMouseDownUp(ev) {
-    startX = ev.offsetX;
-    console.log(startX)
-    startY = ev.offsetY;
+function onMouseDownUp() {
     gMouseClicked = !gMouseClicked;
+    gPrevPos = {};
+}
+
+function onMouseOut(){
+    if (!gMouseClicked) return;
+    gMouseClicked = !gMouseClicked; 
 }
 
 function onMouseMove(ev) {
     if (!gMouseClicked) return;
     if (!txtClicked(ev)) return;
-    ev.preventDefault();
-    var mouseX = ev.offsetX;
-    console.log(mouseX)
-    var mouseY = ev.offsetY;
-    dragText(mouseX, mouseY)
-    drawCanvas(gMeme.selectedImgId);
-    drawTxt();
+    var x = parseInt(ev.offsetX);
+    var y = parseInt(ev.offsetY);
+    dragText(x, y)
 }
 
 function dragText(x, y) {
-    // Put your mousemove stuff here
-    var dx = x - startX;
-    console.log(dx);
-    var dy = y - startY;
-    startX = x;
-    startY = y;
-    gMeme.txts[gCurrTxtIdx].x += dx;
-    gMeme.txts[gCurrTxtIdx].y += dy;
+    // console.log(x,y)
+    if (!gPrevPos.x) gPrevPos.x = x;
+    if (!gPrevPos.y) gPrevPos.y = y;
+    gMeme.txts[gCurrTxtIdx].x += x - gPrevPos.x;
+    gMeme.txts[gCurrTxtIdx].y += y - gPrevPos.y;
+    gPrevPos.x = x;
+    gPrevPos.y = y;
+    drawCanvas(gMeme.selectedImgId);
+    drawTxt();
 }
 
 function onDiscardMeme() {

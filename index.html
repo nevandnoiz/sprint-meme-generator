@@ -11,7 +11,9 @@
 
 <body onload="init()">
     <header>
-        <a href="./"><h1>Meme Generator</h1></a>
+        <a href="./">
+            <h1>Meme Generator</h1>
+        </a>
     </header>
     <main>
         <div class="gallery-container">
@@ -24,19 +26,22 @@
         </div>
         <div class="meme-editor-container hidden">
             <div class="confirm-modal flex hidden">
-                    Are your sure you want to delete this text?
-                    <div class="confirm-btns flex">
-                        <button onclick="onConfirmDelete()">Yes</button>
-                        <button onclick="toggleView('.confirm-modal')">No</button>
-                    </div>
+                Are your sure you want to delete this text?
+                <div class="confirm-btns flex">
+                    <button onclick="onConfirmDelete()">Yes</button>
+                    <button onclick="toggleView('.confirm-modal')">No</button>
+                </div>
             </div>
             <button onclick="onDiscardMeme()" class="discard-btn">
                 X Discard meme
             </button>
-            <a href="" onclick="onClickDownload(this)"><button">Download</button></a>
+            <a href="" onclick="onClickDownload(this)">
+                <button">Download</button>
+            </a>
             <div class="meme-control flex">
                 <canvas width="600" height="600" class="meme-canvas" onclick="onCanvasClicked(event)"
-                onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp(event)" onmouseup="onMouseDownUp(event)">
+                    onmousemove="onMouseMove(event)" onmousedown="onMouseDownUp()" onmouseup="onMouseDownUp()"
+                    onmouseout="onMouseOut()">
 
                 </canvas>
 
