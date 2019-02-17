@@ -10,18 +10,18 @@
 </head>
 
 <body onload="init()">
-        <header>
-            <a href="./">
-                <h1>Meme Generator</h1>
-            </a>
-            <input placeholder="Search by keyword" list="search-options" class="search-filter-input" name="search"
-                onkeyup="onFiterImages(value)">
-            <datalist id="search-options">
-            
-            </datalist>
-            <div class="header-button grid grid-center hidden">
-                    <a class="back-btn button btnFloat btnGrey" onclick="onBackToGallery()"> Back to gallery</a>
-                </div>
+    <header>
+        <a href="./">
+            <h1>Meme Generator</h1>
+        </a>
+        <input placeholder="Search by keyword" list="search-options" class="search-filter-input" name="search"
+            onkeyup="onFiterImages(value)">
+        <datalist id="search-options">
+
+        </datalist>
+        <div class="header-button grid grid-center hidden">
+            <a class="back-btn button btnFloat btnGrey" onclick="onBackToGallery()"> Back to gallery</a>
+        </div>
     </header>
     <main>
         <div class="gallery-container">
@@ -36,6 +36,7 @@
                 <canvas width="600" height="600" class="meme-canvas">
 
                 </canvas>
+                <div class="grid">
                     <div class="text-editor grid">
 
                     </div>
@@ -45,20 +46,21 @@
                         Download
                     </a>
                 </div>
+            </div>
         </div>
     </main>
     <footer class="footer-basic-centered">
 
-            <p class="footer-company-motto">Created by</p>
-            <p>Guy Nevenhoiz & Michael Eyvazov</p>
+        <p class="footer-company-motto">Created by</p>
+        <p>Guy Nevenhoiz & Michael Eyvazov</p>
 
-			<!-- <p class="footer-links">
+        <!-- <p class="footer-links">
 				<a href="./">Home</a>
 			</p> -->
 
-			<p class="footer-company-name">Company Name © 2019</p>
+        <p class="footer-company-name">Company Name © 2019</p>
 
-		</footer>
+    </footer>
     <script src="js/util.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/gallery-service.js"></script>
