@@ -5,6 +5,8 @@ function initMemeEditor(imgId) {
     gCurrTxtIdx = 0;
     toggleView('.meme-editor-container');
     toggleView('.gallery-container');
+    toggleView('.search-filter-input');
+    toggleView('.header-button');
     drawCanvas(imgId);
     addTxtLine('top');
     addTxtLine('bottom');
@@ -165,6 +167,8 @@ function dragText(x, y) {
 function onBackToGallery() {
     toggleView('.meme-editor-container');
     toggleView('.gallery-container');
+    toggleView('.search-filter-input');
+    toggleView('.header-button');
 }
 
 function onClickDownload(elLink) {
