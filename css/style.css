@@ -95,6 +95,9 @@ main {
 }
 
 /*Meme Editor: */
+canvas {
+    border-radius: 10px;
+}
 
 canvas {
     border-radius: 10px;
@@ -256,6 +259,7 @@ canvas {
 
 @media only screen and (max-width: 768px) {
     .text-editor {
+        border-radius: 0;
         height: 250px;
         border-radius:0;
         width: 100vw;
@@ -407,6 +411,5 @@ display: flex;
     text-align: center;
     font: normal 18px sans-serif;
     padding: 20px;
-    /* padding: 45px;
-    margin-top: 80px; */
+    /* margin-top: 80px; */
 }
